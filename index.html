@@ -1097,11 +1097,17 @@
         </div>
 
         <div class="section" id="publications">
-            <h2 class="section-title">Publications</h2>
+            <h2 class="section-title">Publications & Copyrighted Works</h2>
             <div class="publication-item">
                 <div class="publication-details">
                     <h3>Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization</h3>
-                    <p>2025 <a href="#" target="_blank">[Link]</a></p>
+                    <p>Published, 2025 <a href="#" target="_blank">[Link]</a></p>
+                </div>
+            </div>
+            <div class="publication-item">
+                <div class="publication-details">
+                    <h3>SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices</h3>
+                    <p>Copyright Registration Pending, 2025 <a href="#" target="_blank">[Link]</a></p>
                 </div>
             </div>
         </div>
@@ -1193,7 +1199,7 @@
     <div class="search-modal" id="search-modal">
         <div class="search-modal-content">
             <span class="search-modal-close">×</span>
-            <input type="text" class="search-input" id="search-input" placeholder="Search Skills, Projects, or Certifications...">
+            <input type="text" class="search-input" id="search-input" placeholder="Search Skills, Projects, Publications, or Certifications...">
             <div class="search-results" id="search-results"></div>
         </div>
     </div>
@@ -1241,9 +1247,10 @@
             "MySQL", "Git", "Pandas", "Matplotlib", "Seaborn"
         ];
 
-        // Certifications Data (including publications for search functionality)
+        // Certifications Data (including publications and copyrighted works for search functionality)
         const certifications = [
             "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization",
+            "SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices",
             "GATE Qualified (Data Science & AI)",
             "UGC NET (Computer Science)",
             "NPTEL: Data Analytics with Python",
@@ -1455,7 +1462,7 @@
 
             certifications.forEach(cert => {
                 if (cert.toLowerCase().includes(query)) {
-                    results.push({ type: 'certification', value: cert, section: cert.includes("Efficient Face Recognition") ? 'publications' : 'certifications' });
+                    results.push({ type: 'certification', value: cert, section: cert.includes("Efficient Face Recognition") || cert.includes("SFLCDApp") ? 'publications' : 'certifications' });
                 }
             });
 
