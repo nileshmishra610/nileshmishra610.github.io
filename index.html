@@ -337,7 +337,7 @@
         .social-links a {
             font-size: 1.5rem;
             color: var(--primary-color);
-            transition: all майдан 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .dark-mode .social-links a {
@@ -467,7 +467,7 @@
             transition: width 1s ease;
         }
 
-        .experience-item, .education-item, .certification-item {
+        .experience-item, .education-item, .certification-item, .publication-item {
             position: relative;
             margin-bottom: 1.5rem;
             padding: 1rem;
@@ -476,31 +476,31 @@
             transition: all 0.3s ease;
         }
 
-        .dark-mode .experience-item, .dark-mode .education-item, .dark-mode .certification-item {
+        .dark-mode .experience-item, .dark-mode .education-item, .dark-mode .certification-item, .dark-mode .publication-item {
             background: rgba(31, 41, 55, 0.7);
         }
 
-        .experience-item:hover, .education-item:hover, .certification-item:hover {
+        .experience-item:hover, .education-item:hover, .certification-item:hover, .publication-item:hover {
             background: rgba(243, 244, 246, 1);
             transform: translateX(5px);
         }
 
-        .dark-mode .experience-item:hover, .dark-mode .education-item:hover, .dark-mode .certification-item:hover {
+        .dark-mode .experience-item:hover, .dark-mode .education-item:hover, .dark-mode .certification-item:hover, .dark-mode .publication-item:hover {
             background: rgba(31, 41, 55, 1);
         }
 
-        .experience-details h3, .education-details h3, .certification-details h3 {
+        .experience-details h3, .education-details h3, .certification-details h3, .publication-details h3 {
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
         }
 
-        .experience-details p, .education-details p, .certification-details p {
+        .experience-details p, .education-details p, .certification-details p, .publication-details p {
             font-size: 0.9rem;
             color: #6b7280;
         }
 
-        .dark-mode .experience-details p, .dark-mode .education-details p, .dark-mode .certification-details p {
+        .dark-mode .experience-details p, .dark-mode .education-details p, .dark-mode .certification-details p, .dark-mode .publication-details p {
             color: #9ca3af;
         }
 
@@ -878,7 +878,7 @@
             .education-timeline, .experience-timeline {
                 padding-left: 2rem;
             }
-            .education-item, .experience-item, .certification-item {
+            .education-item, .experience-item, .certification-item, .publication-item {
                 padding: 1.2rem;
                 margin-bottom: 2rem;
             }
@@ -887,10 +887,10 @@
                 width: 12px;
                 height: 12px;
             }
-            .education-details h3, .experience-details h3, .certification-details h3 {
+            .education-details h3, .experience-details h3, .certification-details h3, .publication-details h3 {
                 font-size: 1.3rem;
             }
-            .education-details p, .experience-details p, .certification-details p {
+            .education-details p, .experience-details p, .certification-details p, .publication-details p {
                 font-size: 1rem;
             }
             .projects-grid {
@@ -993,6 +993,7 @@
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
+                <a href="#publications">Publications</a>
                 <a href="#certifications">Certifications</a>
                 <a href="#interests">Interests</a>
                 <a href="#contact">Contact</a>
@@ -1095,6 +1096,16 @@
             <div class="projects-grid" id="projects-grid"></div>
         </div>
 
+        <div class="section" id="publications">
+            <h2 class="section-title">Publications</h2>
+            <div class="publication-item">
+                <div class="publication-details">
+                    <h3>Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization</h3>
+                    <p>2025 <a href="#" target="_blank">[Link]</a></p>
+                </div>
+            </div>
+        </div>
+
         <div class="section" id="certifications">
             <h2 class="section-title">Certifications & Achievements</h2>
             <div class="certification-item">
@@ -1164,6 +1175,7 @@
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
             <a href="#certifications">Certifications</a>
             <a href="#interests">Interests</a>
             <a href="#contact">Contact</a>
@@ -1229,8 +1241,9 @@
             "MySQL", "Git", "Pandas", "Matplotlib", "Seaborn"
         ];
 
-        // Certifications Data
+        // Certifications Data (including publications for search functionality)
         const certifications = [
+            "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization",
             "GATE Qualified (Data Science & AI)",
             "UGC NET (Computer Science)",
             "NPTEL: Data Analytics with Python",
@@ -1442,7 +1455,7 @@
 
             certifications.forEach(cert => {
                 if (cert.toLowerCase().includes(query)) {
-                    results.push({ type: 'certification', value: cert });
+                    results.push({ type: 'certification', value: cert, section: cert.includes("Efficient Face Recognition") ? 'publications' : 'certifications' });
                 }
             });
 
@@ -1451,7 +1464,7 @@
                 item.classList.add('search-result-item');
                 item.textContent = `${result.type.charAt(0).toUpperCase() + result.type.slice(1)}: ${result.value}`;
                 item.addEventListener('click', () => {
-                    const sectionId = result.type === 'skill' ? 'skills' : result.type === 'project' ? 'projects' : 'certifications';
+                    const sectionId = result.type === 'skill' ? 'skills' : result.type === 'project' ? 'projects' : result.section || 'certifications';
                     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
                     searchModal.style.display = 'none';
                     searchInput.value = '';
