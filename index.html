@@ -235,11 +235,12 @@
             padding: 5rem 2rem;
             display: flex;
             flex-wrap: wrap;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             gap: 2rem;
             min-height: 100vh;
             position: relative;
+            text-align: center;
             background: linear-gradient(135deg, #e5e7eb, var(--bg-color));
         }
 
@@ -258,14 +259,14 @@
         }
 
         /* Hero Layout */
-        .hero-slideshow, .hero-content, .hero-news {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
-        }
-
-        .hero-content {
-            text-align: center;
+        .hero-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            flex: 2;
+            min-width: 300px;
+            max-width: 700px;
         }
 
         @media (min-width: 768px) {
@@ -274,11 +275,10 @@
                 justify-content: space-between;
                 padding: 6rem 4rem;
             }
-            .hero-content {
+            .hero-main {
+                flex-direction: row;
                 text-align: left;
-            }
-            .hero-slideshow {
-                max-width: 250px;
+                max-width: 800px;
             }
             .hero-news {
                 max-width: 350px;
@@ -289,16 +289,9 @@
             .hero {
                 padding: 4rem 1.5rem;
                 flex-direction: column;
-                align-items: center;
             }
-            .hero-slideshow, .hero-content, .hero-news {
+            .hero-main, .hero-news {
                 width: 100%;
-                max-width: 100%;
-            }
-            .hero-slideshow {
-                max-width: 180px;
-            }
-            .hero-news {
                 max-width: 100%;
             }
         }
@@ -306,6 +299,7 @@
         /* Slideshow Styles */
         .slideshow-container {
             width: 100%;
+            max-width: 250px;
             height: 250px; /* Fixed height for uniform size */
             border-radius: 12px;
             overflow: hidden;
@@ -357,8 +351,12 @@
             transform: scale(1.1);
         }
 
+        .hero-content {
+            max-width: 700px;
+        }
+
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
@@ -369,7 +367,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 400;
             color: var(--accent-color);
             margin-bottom: 1rem;
@@ -380,13 +378,13 @@
         }
 
         .typed-text {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--secondary-color);
             font-weight: 600;
         }
 
         .hero-text {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #4b5563;
             margin-bottom: 1.5rem;
         }
@@ -404,7 +402,7 @@
         }
 
         .social-links a {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
             transition: all 0.3s ease;
         }
@@ -428,7 +426,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -451,6 +449,9 @@
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
         }
 
         .dark-mode .hero-news {
@@ -459,7 +460,7 @@
         }
 
         .hero-news .section-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
 
@@ -485,6 +486,11 @@
             animation-play-state: paused;
         }
 
+        @keyframes ticker-scroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+
         .hero-news .news-item {
             padding: 1rem;
             cursor: pointer;
@@ -506,7 +512,7 @@
         }
 
         .hero-news .news-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
@@ -517,7 +523,7 @@
         }
 
         .hero-news .news-date, .hero-news .news-desc {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #6b7280;
         }
 
@@ -531,7 +537,7 @@
             padding: 1rem;
             background: rgba(243, 244, 246, 0.9);
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .dark-mode .hero-news .news-details {
@@ -1027,20 +1033,23 @@
                 font-size: 1.3rem;
             }
             .hero-title {
-                font-size: 3.5rem;
+                font-size: 4rem;
             }
             .hero-subtitle, .typed-text {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             .hero-text {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
             }
             .social-links a {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .download-btn {
                 padding: 1rem 2rem;
-                font-size: 1.1rem;
+                font-size: 1.4rem;
+            }
+            .slideshow-container {
+                max-width: 300px;
             }
             .sections {
                 padding: 4rem;
@@ -1142,10 +1151,22 @@
                 display: block;
             }
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .hero-subtitle, .typed-text {
+                font-size: 1.2rem;
+            }
+            .hero-text {
                 font-size: 1rem;
+            }
+            .social-links a {
+                font-size: 1.5rem;
+            }
+            .download-btn {
+                font-size: 1rem;
+            }
+            .slideshow-container {
+                max-width: 200px;
             }
             .sections {
                 padding: 2rem 1.5rem;
@@ -1183,24 +1204,24 @@
 
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
-        <div class="hero-slideshow">
+        <div class="hero-main">
             <div class="slideshow-container" id="profile-slideshow">
                 <!-- Profile images will be loaded dynamically -->
                 <div class="slideshow-dots" id="profile-slideshow-dots"></div>
             </div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Nilesh Mishra</h1>
-            <h2 class="hero-subtitle">Research Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" style="color: var(--secondary-color); text-decoration: none;">CSE @ IIT Jodhpur</a> | <span class="typed-text"></span></h2>
-            <p class="hero-text">
-               Pursuing PhD in CSE at IIT Jodhpur, building innovative solutions in computer vision, machine learning, deep learning, and mobile applications to solve real-world challenges.
-            </p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/nileshmishra610" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:nileshmishra610@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="hero-content">
+                <h1 class="hero-title">Nilesh Mishra</h1>
+                <h2 class="hero-subtitle">Research Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" style="color: var(--secondary-color); text-decoration: none;">CSE @ IIT Jodhpur</a> | <span class="typed-text"></span></h2>
+                <p class="hero-text">
+                   Pursuing PhD in CSE at IIT Jodhpur, building innovative solutions in computer vision, machine learning, deep learning, and mobile applications to solve real-world challenges.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/nileshmishra610" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:nileshmishra610@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <a href="cv.pdf" download="CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
             </div>
-            <a href="cv.pdf" download="CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
         </div>
         <div class="hero-news" id="news">
             <h2 class="section-title">News</h2>
@@ -1624,6 +1645,10 @@
         function initializeNewsTicker() {
             const ticker = document.querySelector('.news-ticker');
             const items = ticker.querySelectorAll('.news-item');
+            const ul = ticker.querySelector('ul');
+
+            // Ensure animation starts
+            ul.style.animation = 'ticker-scroll 20s linear infinite';
 
             items.forEach(item => {
                 item.addEventListener('click', () => {
@@ -1633,6 +1658,14 @@
                     } else {
                         items.forEach(i => i.querySelector('.news-details').style.display = 'none');
                         details.style.display = 'block';
+                        ul.style.animationPlayState = 'paused';
+                    }
+                });
+                // Resume animation when not interacting
+                item.addEventListener('mouseleave', () => {
+                    const details = item.querySelector('.news-details');
+                    if (details.style.display !== 'block') {
+                        ul.style.animationPlayState = 'running';
                     }
                 });
             });
