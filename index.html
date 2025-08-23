@@ -472,14 +472,47 @@
 
         .hero-news .news-ticker {
             height: 250px;
-            overflow: hidden;
+            overflow-y: auto; /* Enable vertical scroll bar */
             background: rgba(243, 244, 246, 0.7);
             border-radius: 8px;
             position: relative;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: var(--secondary-color) var(--accent-color);
         }
 
         .dark-mode .hero-news .news-ticker {
             background: rgba(31, 41, 55, 0.7);
+        }
+
+        /* Custom Scrollbar */
+        .hero-news .news-ticker::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .hero-news .news-ticker::-webkit-scrollbar-track {
+            background: var(--accent-color);
+            border-radius: 8px;
+        }
+
+        .hero-news .news-ticker::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 8px;
+        }
+
+        .hero-news .news-ticker::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-track {
+            background: #4b5563;
+        }
+
+        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+        }
+
+        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
         }
 
         .hero-news .news-ticker ul {
@@ -1448,11 +1481,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
         // Load Profile Images from Local Folder
-        const profileImageBasePath = 'images/Profile/';
+        const profileImageBasePath = 'images/profile/';
         const profileImageFilenames = [
-            'Profile1.jpg',
-            'Profile2.jpg',
-            'Profile3.jpg'
+            'profile1.jpg',
+            'profile2.jpg',
+            'profile3.jpg'
         ];
 
         const slideshowContainer = document.getElementById('profile-slideshow');
@@ -1676,6 +1709,7 @@
 
             ul.style.animation = 'ticker-scroll 20s linear infinite';
 
+            // Pause on hover
             ticker.addEventListener('mouseenter', () => {
                 ul.style.animationPlayState = 'paused';
             });
@@ -1685,6 +1719,19 @@
                 }
             });
 
+            // Pause on manual scroll
+            let scrollTimeout;
+            ticker.addEventListener('scroll', () => {
+                ul.style.animationPlayState = 'paused';
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (!ticker.querySelector('.news-details[style*="display: block"]')) {
+                        ul.style.animationPlayState = 'running';
+                    }
+                }, 2000);
+            });
+
+            // News item click to show details
             items.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1700,6 +1747,7 @@
                 });
             });
 
+            // Scroll icon click to move up one item
             scrollIcon.addEventListener('click', () => {
                 const tickerHeight = ticker.offsetHeight;
                 const ulHeight = ul.offsetHeight;
@@ -1713,7 +1761,7 @@
                     newY = -(ulHeight - tickerHeight);
                     ul.style.transition = 'none';
                     ul.style.transform = `translateY(${newY}px)`;
-                    ul.offsetHeight;
+                    ul.offsetHeight; // Trigger reflow
                     ul.style.transition = 'transform 0.5s ease';
                 } else {
                     ul.style.transition = 'transform 0.5s ease';
@@ -1721,7 +1769,8 @@
                 }
 
                 ul.style.animationPlayState = 'paused';
-                setTimeout(() => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
                     if (!ticker.querySelector('.news-details[style*="display: block"]')) {
                         ul.style.animationPlayState = 'running';
                     }
@@ -1789,8 +1838,8 @@
 
                 imgs.forEach(img => {
                     img.addEventListener('click', () => {
-                        enlargedImage.src = img.src;
-                        imageModal.style.display = 'flex';
+                        document.getElementById('enlarged-image').src = img.src; // Set the clicked image's src
+                        document.getElementById('image-modal').style.display = 'flex';
                     });
                 });
             });
@@ -1932,4 +1981,3 @@
     </script>
 </body>
 </html>
-
