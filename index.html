@@ -258,29 +258,55 @@
             opacity: 0.5;
         }
 
-        .profile-container {
+        /* Slideshow Styles */
+        .slideshow-container {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
+            border-radius: 12px;
             overflow: hidden;
+            position: relative;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             background: radial-gradient(circle, rgba(245, 158, 11, 0.2), transparent);
         }
 
-        .profile-img {
+        .slideshow-img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slideshow-img.active {
+            opacity: 1;
+        }
+
+        .slideshow-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-color);
-            transition: transform 0.5s ease;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .dark-mode .profile-img {
-            border-color: var(--secondary-color);
+        .dot.active {
+            background: var(--secondary-color);
         }
 
-        .profile-container:hover .profile-img {
+        .slideshow-container:hover .slideshow-img {
             transform: scale(1.1);
         }
 
@@ -597,7 +623,7 @@
         .project-img {
             width: 100%;
             height: 160px;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
 
@@ -835,7 +861,7 @@
                 flex-direction: row;
                 text-align: left;
             }
-            .profile-container {
+            .slideshow-container {
                 width: 250px;
                 height: 250px;
             }
@@ -960,7 +986,7 @@
             .hero {
                 padding: 4rem 1.5rem;
             }
-            .profile-container {
+            .slideshow-container {
                 width: 180px;
                 height: 180px;
             }
@@ -1006,8 +1032,15 @@
 
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
-        <div class="profile-container">
-            <img src="profile.jpg.jpeg" alt="Nilesh Mishra Profile" class="profile-img">
+        <div class="slideshow-container">
+            <img src="profile1.jpg" alt="Profile Image 1" class="slideshow-img active">
+            <img src="profile2.jpg" alt="Profile Image 2" class="slideshow-img">
+            <img src="profile3.jpg" alt="Profile Image 3" class="slideshow-img">
+            <div class="slideshow-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Nilesh Mishra</h1>
@@ -1320,6 +1353,35 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        // Slideshow Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slideshow-img');
+        const dots = document.querySelectorAll('.slideshow-dots .dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showSlide(i);
+            });
+        });
+
+        // Auto-slide every 3 seconds
+        setInterval(nextSlide, 3000);
+
         // Typing Effect
         const typedText = document.querySelector('.typed-text');
         const words = ['ML Engineer', 'Android Developer', 'Data Scientist'];
@@ -1524,9 +1586,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
