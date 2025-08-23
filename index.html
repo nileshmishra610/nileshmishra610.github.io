@@ -262,7 +262,7 @@
         .slideshow-container {
             width: 100%;
             max-width: 250px;
-            height: auto;
+            height: 250px; /* Fixed height for uniform size */
             border-radius: 12px;
             overflow: hidden;
             position: relative;
@@ -272,8 +272,8 @@
 
         .slideshow-img {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover; /* Changed to cover for uniform fit */
             position: absolute;
             top: 0;
             left: 0;
@@ -1155,9 +1155,9 @@
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
         <div class="slideshow-container">
-            <img src="Profile1.jpg" alt="Profile Image 1" class="slideshow-img active">
-            <img src="Profile2.jpg" alt="Profile Image 2" class="slideshow-img">
-            <img src="Profile3.jpg" alt="Profile Image 3" class="slideshow-img">
+            <img src="https://drive.google.com/uc?id=PROFILE1_FILE_ID" alt="Profile Image 1" class="slideshow-img active">
+            <img src="https://drive.google.com/uc?id=PROFILE2_FILE_ID" alt="Profile Image 2" class="slideshow-img">
+            <img src="https://drive.google.com/uc?id=PROFILE3_FILE_ID" alt="Profile Image 3" class="slideshow-img">
             <div class="slideshow-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1183,31 +1183,8 @@
         <div class="section" id="news">
             <h2 class="section-title">News</h2>
             <div class="news-ticker">
-                <ul>
-                    <li class="news-item">
-                        <h3 class="news-title">Paper Accepted at Top AI Conference</h3>
-                        <p class="news-date">August 2025</p>
-                        <p class="news-desc">Research paper on advanced computer vision techniques accepted at a prestigious AI conference.</p>
-                        <div class="news-details">Detailed description of the paper, its significance, and the conference details.</div>
-                    </li>
-                    <li class="news-item">
-                        <h3 class="news-title">Invited Talk at IIT Jodhpur</h3>
-                        <p class="news-date">July 2025</p>
-                        <p class="news-desc">Delivered a talk on deep learning applications in urban planning.</p>
-                        <div class="news-details">Details about the talk, audience, and key takeaways.</div>
-                    </li>
-                    <li class="news-item">
-                        <h3 class="news-title">New Project Launch</h3>
-                        <p class="news-date">June 2025</p>
-                        <p class="news-desc">Launched a new Android app for real-time crop disease detection.</p>
-                        <div class="news-details">Information about the project, its impact, and deployment details.</div>
-                    </li>
-                    <li class="news-item">
-                        <h3 class="news-title">Collaboration with GeoAI4Cities Lab</h3>
-                        <p class="news-date">May 2025</p>
-                        <p class="news-desc">Started a collaboration on a GeoAI project for urban accessibility.</p>
-                        <div class="news-details">Details about the collaboration, objectives, and expected outcomes.</div>
-                    </li>
+                <ul id="news-list">
+                    <!-- News items will be loaded here -->
                 </ul>
             </div>
         </div>
@@ -1305,18 +1282,7 @@
 
         <div class="section" id="publications">
             <h2 class="section-title">Publications & Copyrighted Works</h2>
-            <div class="publication-item">
-                <div class="publication-details">
-                    <h3>Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization</h3>
-                    <p>Published, 2025 <a href="#" target="_blank">[Link]</a></p>
-                </div>
-            </div>
-            <div class="publication-item">
-                <div class="publication-details">
-                    <h3>SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices</h3>
-                    <p>Copyright Registration Pending, 2025 <a href="#" target="_blank">[Link]</a></p>
-                </div>
-            </div>
+            <div id="publications-list"></div>
         </div>
 
         <div class="section" id="certifications">
@@ -1408,72 +1374,53 @@
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
-        // Project Data
-        const projects = [
-            {
-                title: "Mango Blossom Diseases Detection",
-                description: "Built a deep learning model using CNNs (VGG16, ResNet50) to classify mango blossom diseases from 1000 images. Deployed as an Android app for real-time farmer diagnostics.",
-                moreDetails: "Additional details about the project, technologies used, challenges faced, and outcomes.",
-                category: "dl",
-                images: ["mango-disease.jpg"],
-                tags: ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
-                link: "https://github.com/nileshmishra610"
-            },
-            {
-                title: "Attendance Management System",
-                description: "Developed a face recognition-based attendance system using OpenCV and LBPH, integrated with MySQL for efficient classroom attendance tracking.",
-                moreDetails: "More information on implementation, accuracy rates, and integration details.",
-                category: "cv",
-                images: ["attendance-system.PNG"],
-                tags: ["Python", "OpenCV", "MySQL", "LBPH"],
-                link: "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
-            },
-            {
-                title: "College Management App",
-                description: "Created an Android app for college resource management with features like notifications, eBooks, and lecture integration, using Firebase and Material UI.",
-                moreDetails: "Details on user interface design, backend integration, and user feedback.",
-                category: "apps",
-                images: ["College.jpg"],
-                tags: ["Java", "Android Studio", "Firebase", "XML"]
-            },
-            {
-                title: "Online Examination App",
-                description: "Designed an Android app for conducting online exams, featuring secure user authentication, question management, and result tracking with Firebase.",
-                moreDetails: "Security measures, exam timer implementation, and result analysis features.",
-                category: "apps",
-                images: ["exam-app.jpg"],
-                images: ["exam-app.jpg"],
-                tags: ["Java", "Android Studio", "Firebase", "XML"]
-            }
-        ];
+        // Load News from JSON
+        fetch('news.json')
+            .then(response => response.json())
+            .then(data => {
+                const newsList = document.getElementById('news-list');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('news-item');
+                    li.innerHTML = `
+                        <h3 class="news-title">${item.title}</h3>
+                        <p class="news-date">${item.date}</p>
+                        <p class="news-desc">${item.description}</p>
+                        <div class="news-details">${item.details}</div>
+                    `;
+                    newsList.appendChild(li);
+                });
+                initializeNewsTicker();
+            });
 
-        // News Data
-        const newsItems = [
-            {
-                title: "Paper Accepted at Top AI Conference",
-                date: "August 2025",
-                description: "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
-                details: "Detailed description of the paper, its significance, and the conference details."
-            },
-            {
-                title: "Invited Talk at IIT Jodhpur",
-                date: "July 2025",
-                description: "Delivered a talk on deep learning applications in urban planning.",
-                details: "Details about the talk, audience, and key takeaways."
-            },
-            {
-                title: "New Project Launch",
-                date: "June 2025",
-                description: "Launched a new Android app for real-time crop disease detection.",
-                details: "Information about the project, its impact, and deployment details."
-            },
-            {
-                title: "Collaboration with GeoAI4Cities Lab",
-                date: "May 2025",
-                description: "Started a collaboration on a GeoAI project for urban accessibility.",
-                details: "Details about the collaboration, objectives, and expected outcomes."
-            }
-        ];
+        // Load Projects from JSON
+        fetch('projects.json')
+            .then(response => response.json())
+            .then(data => {
+                projects = data; // Update the projects array
+                loadProjects();
+            });
+
+        // Load Publications from JSON
+        fetch('publications.json')
+            .then(response => response.json())
+            .then(data => {
+                const publicationsList = document.getElementById('publications-list');
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.classList.add('publication-item');
+                    div.innerHTML = `
+                        <div class="publication-details">
+                            <h3>${item.title}</h3>
+                            <p>${item.details}</p>
+                        </div>
+                    `;
+                    publicationsList.appendChild(div);
+                });
+            });
+
+        // Project Data (initial, will be overridden by JSON)
+        let projects = [];
 
         // Skills Data
         const skills = [
@@ -1830,4 +1777,3 @@
     </script>
 </body>
 </html>
-
