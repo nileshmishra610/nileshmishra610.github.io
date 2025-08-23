@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Mango Blossom Diseases Detection",
+        "description": "Built a deep learning model using CNNs (VGG16, ResNet50) to classify mango blossom diseases from 1000 images. Deployed as an Android app for real-time farmer diagnostics.",
+        "moreDetails": "Additional details about the project, technologies used, challenges faced, and outcomes.",
+        "category": "dl",
+        "images": [
+            "https://drive.google.com/uc?id=MANGO_IMAGE1_FILE_ID",
+            "https://drive.google.com/uc?id=MANGO_IMAGE2_FILE_ID"
+        ],
+        "tags": ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
+        "link": "https://github.com/nileshmishra610"
+    },
+    {
+        "title": "Attendance Management System",
+        "description": "Developed a face recognition-based attendance system using OpenCV and LBPH, integrated with MySQL for efficient classroom attendance tracking.",
+        "moreDetails": "More information on implementation, accuracy rates, and integration details.",
+        "category": "cv",
+        "images": [
+            "https://drive.google.com/uc?id=ATTENDANCE_IMAGE1_FILE_ID",
+            "https://drive.google.com/uc?id=ATTENDANCE_IMAGE2_FILE_ID"
+        ],
+        "tags": ["Python", "OpenCV", "MySQL", "LBPH"],
+        "link": "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
+    },
+    {
+        "title": "College Management App",
+        "description": "Created an Android app for college resource management with features like notifications, eBooks, and lecture integration, using Firebase and Material UI.",
+        "moreDetails": "Details on user interface design, backend integration, and user feedback.",
+        "category": "apps",
+        "images": [
+            "https://drive.google.com/uc?id=COLLEGE_IMAGE1_FILE_ID",
+            "https://drive.google.com/uc?id=COLLEGE_IMAGE2_FILE_ID"
+        ],
+        "tags": ["Java", "Android Studio", "Firebase", "XML"],
+        "link": ""
+    },
+    {
+        "title": "Online Examination App",
+        "description": "Designed an Android app for conducting online exams, featuring secure user authentication, question management, and result tracking with Firebase.",
+        "moreDetails": "Security measures, exam timer implementation, and result analysis features.",
+        "category": "apps",
+        "images": [
+            "https://drive.google.com/uc?id=EXAM_IMAGE1_FILE_ID",
+            "https://drive.google.com/uc?id=EXAM_IMAGE2_FILE_ID"
+        ],
+        "tags": ["Java", "Android Studio", "Firebase", "XML"],
+        "link": ""
+    }
+]
