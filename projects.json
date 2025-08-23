@@ -5,8 +5,7 @@
         "moreDetails": "More information on implementation, accuracy rates, and integration details.",
         "category": "cv",
         "images": [
-            "/images/projects/attendance-system.PNG",
-            
+            "/images/projects/attendance-system.PNG"
         ],
         "tags": ["Python", "OpenCV", "MySQL", "LBPH"],
         "link": "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
@@ -30,8 +29,8 @@
         "category": "apps",
         "images": [
             "/images/projects/exam-app.jpg",
-            "/images/projects/ExamAPP3.jpg"
-            "/images/projects/ExamAPP1.jpg"
+            "/images/projects/ExamAPP3.jpg",
+            "/images/projects/ExamAPP1.jpg",
             "/images/projects/ExamAPP6.jpg"
         ],
         "tags": ["Java", "Android Studio", "Firebase", "XML"],
