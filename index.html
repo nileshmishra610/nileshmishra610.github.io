@@ -472,15 +472,15 @@
 
         .hero-news .news-ticker {
             height: 250px;
-            overflow-y: auto; /* Enable vertical scroll bar */
+            overflow-y: auto;
             background: rgba(243, 244, 246, 0.7);
             border-radius: 8px;
             position: relative;
-            scrollbar-width: thin; /* Firefox */
+            scrollbar-width: thin;
             scrollbar-color: var(--secondary-color) var(--accent-color);
         }
 
-        .dark-mode .hero-news .news-ticker {
+       .dark-mode .hero-news .news-ticker {
             background: rgba(31, 41, 55, 0.7);
         }
 
@@ -517,12 +517,12 @@
 
         .hero-news .news-ticker ul {
             list-style: none;
-            padding: 0;
+            padding: 0.5rem; /* Added padding to ensure first item is fully visible */
             margin: 0;
             animation: ticker-scroll 20s linear infinite;
         }
 
-        .hero-news .news-ticker:hover ul {
+       .hero-news .news-ticker:hover ul {
             animation-play-state: paused;
         }
 
@@ -1481,11 +1481,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
         // Load Profile Images from Local Folder
-        const profileImageBasePath = 'images/profile/';
+        const profileImageBasePath = 'images/Profile/';
         const profileImageFilenames = [
-            'profile1.jpg',
-            'profile2.jpg',
-            'profile3.jpg'
+            'Profile1.jpg',
+            'Profile2.jpg',
+            'Profile3.jpg'
         ];
 
         const slideshowContainer = document.getElementById('profile-slideshow');
@@ -1719,10 +1719,16 @@
                 }
             });
 
-            // Pause on manual scroll
+            // Pause on manual scroll and reset transform when at top
             let scrollTimeout;
             ticker.addEventListener('scroll', () => {
                 ul.style.animationPlayState = 'paused';
+                // If scrolled to top, reset transform to ensure first item is fully visible
+                if (ticker.scrollTop === 0) {
+                    ul.style.transition = 'none';
+                    ul.style.transform = 'translateY(0)';
+                    ul.offsetHeight; // Trigger reflow
+                }
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(() => {
                     if (!ticker.querySelector('.news-details[style*="display: block"]')) {
@@ -1981,3 +1987,4 @@
     </script>
 </body>
 </html>
+
