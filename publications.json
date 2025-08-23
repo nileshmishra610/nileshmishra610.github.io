@@ -11,8 +11,7 @@
     }
     {
             "title": "Deep Learning Based Approach to Quantify the Emergency Vehicle Accessibility in Urban Areas Using LiDAR and Images",
-            "description": "Designed a deep learning system at GeoAI4Cities Lab, IISER Bhopal, leveraging CNNs and PointNet to analyze LiDAR and image data for real-time urban accessibility solutions. Patent filed with the Indian Patent Office. <a href='https://sites.google.com/iiserb.ac.in/geoai/people' target='_blank'>[Lab Profile]</a>",
             "details": "Patent Filed, Indian Patent Office, 2025",
             "link": "#"
-        }
+    }
 ]
