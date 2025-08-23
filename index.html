@@ -260,8 +260,9 @@
 
         /* Slideshow Styles */
         .slideshow-container {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            max-width: 250px;
+            height: auto;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
@@ -271,7 +272,7 @@
 
         .slideshow-img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: contain;
             position: absolute;
             top: 0;
@@ -283,6 +284,7 @@
 
         .slideshow-img.active {
             opacity: 1;
+            position: relative;
         }
 
         .slideshow-dots {
@@ -452,6 +454,93 @@
             bottom: -6px;
             left: 0;
             border-radius: 3px;
+        }
+
+        /* Achievements Slideshow */
+        .achievements-slideshow {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .achievement-slide {
+            display: none;
+            padding: 1rem;
+            background: rgba(243, 244, 246, 0.7);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .achievement-slide {
+            background: rgba(31, 41, 55, 0.7);
+        }
+
+        .achievement-slide.active {
+            display: block;
+        }
+
+        .achievement-slide:hover {
+            background: rgba(243, 244, 246, 1);
+            transform: scale(1.02);
+        }
+
+        .dark-mode .achievement-slide:hover {
+            background: rgba(31, 41, 55, 1);
+        }
+
+        .achievement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .dark-mode .achievement-title {
+            color: var(--secondary-color);
+        }
+
+        .achievement-date, .achievement-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .dark-mode .achievement-date, .dark-mode .achievement-desc {
+            color: #9ca3af;
+        }
+
+        .achievement-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(243, 244, 246, 0.9);
+            border-radius: 8px;
+        }
+
+        .dark-mode .achievement-details {
+            background: rgba(31, 41, 55, 0.9);
+        }
+
+        .achievements-slideshow-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .achievement-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .achievement-dot.active {
+            background: var(--secondary-color);
         }
 
         .skills-list {
@@ -723,6 +812,28 @@
             color: var(--primary-color);
         }
 
+        .read-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-more-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(243, 244, 246, 0.7);
+            border-radius: 8px;
+        }
+
+        .dark-mode .project-more-details {
+            background: rgba(31, 41, 55, 0.7);
+        }
+
         /* Image Modal */
         .image-modal {
             display: none;
@@ -746,8 +857,9 @@
         #enlarged-image {
             width: auto;
             height: auto;
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
             border-radius: 8px;
         }
 
@@ -944,8 +1056,7 @@
                 text-align: left;
             }
             .slideshow-container {
-                width: 250px;
-                height: 250px;
+                max-width: 250px;
             }
             .hero-title {
                 font-size: 3.5rem;
@@ -972,6 +1083,9 @@
             }
             .section-title {
                 font-size: 2.2rem;
+            }
+            .achievements-slideshow {
+                max-width: 800px;
             }
             .skills-list {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1069,8 +1183,7 @@
                 padding: 4rem 1.5rem;
             }
             .slideshow-container {
-                width: 180px;
-                height: 180px;
+                max-width: 180px;
             }
             .hero-title {
                 font-size: 2rem;
@@ -1083,6 +1196,9 @@
             }
             .section {
                 padding: 1.5rem;
+            }
+            .achievements-slideshow {
+                max-width: 100%;
             }
             .project-slideshow {
                 height: 140px;
@@ -1097,6 +1213,7 @@
         <div class="nav-icons">
             <div class="nav-links">
                 <a href="#bio">Bio</a>
+                <a href="#achievements">Achievements</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
@@ -1140,6 +1257,42 @@
     </section>
 
     <div class="sections">
+        <div class="section" id="achievements">
+            <h2 class="section-title">Achievements & Awards</h2>
+            <div class="achievements-slideshow">
+                <div class="achievement-slide active">
+                    <h3 class="achievement-title">Paper Acceptance Notification</h3>
+                    <p class="achievement-date">Conference Name | August 2025</p>
+                    <p class="achievement-desc">Received acceptance for a research paper on advanced computer vision techniques.</p>
+                    <div class="achievement-details">Detailed description of the paper, its significance, and the conference details.</div>
+                </div>
+                <div class="achievement-slide">
+                    <h3 class="achievement-title">Award for Outstanding Research</h3>
+                    <p class="achievement-date">IIT Jodhpur | July 2025</p>
+                    <p class="achievement-desc">Recognized for contributions in computer vision research.</p>
+                    <div class="achievement-details">Details about the award, including the criteria and impact of the research.</div>
+                </div>
+                <div class="achievement-slide">
+                    <h3 class="achievement-title">Conference Participation Certificate</h3>
+                    <p class="achievement-date">International Conference on AI | June 2025</p>
+                    <p class="achievement-desc">Presented a paper on machine learning applications.</p>
+                    <div class="achievement-details">Information about the conference, presentation details, and outcomes.</div>
+                </div>
+                <div class="achievement-slide">
+                    <h3 class="achievement-title">Class Topper in MCA</h3>
+                    <p class="achievement-date">Pondicherry University | Jun 2024</p>
+                    <p class="achievement-desc">Topped the class with the highest GPA.</p>
+                    <div class="achievement-details">Details about the academic performance and recognition received.</div>
+                </div>
+                <div class="achievements-slideshow-dots">
+                    <span class="achievement-dot active"></span>
+                    <span class="achievement-dot"></span>
+                    <span class="achievement-dot"></span>
+                    <span class="achievement-dot"></span>
+                </div>
+            </div>
+        </div>
+
         <div class="section" id="skills">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills-list">
@@ -1300,9 +1453,9 @@
             <div class="contact-form">
                 <h2 class="section-title">Get in Touch</h2>
                 <form id="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea rows="4" name="message" placeholder="Your Message" required></textarea>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea rows="4" id="message" name="message" placeholder="Your Message" required></textarea>
                     <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
                 </form>
             </div>
@@ -1312,6 +1465,7 @@
     <footer>
         <div class="footer-links">
             <a href="#bio">Bio</a>
+            <a href="#achievements">Achievements</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
@@ -1334,7 +1488,7 @@
     <div class="search-modal" id="search-modal">
         <div class="search-modal-content">
             <span class="search-modal-close">×</span>
-            <input type="text" class="search-input" id="search-input" placeholder="Search Skills, Projects, Publications, or Certifications...">
+            <input type="text" class="search-input" id="search-input" placeholder="Search Skills, Projects, Publications, or Achievements...">
             <div class="search-results" id="search-results"></div>
         </div>
     </div>
@@ -1347,12 +1501,21 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+         emailjs.init({
+           publicKey: "YOUR_PUBLIC_KEY", // Replace with your EmailJS public key
+         });
+      })();
+    </script>
     <script>
         // Project Data
         const projects = [
             {
                 title: "Mango Blossom Diseases Detection",
                 description: "Built a deep learning model using CNNs (VGG16, ResNet50) to classify mango blossom diseases from 1000 images. Deployed as an Android app for real-time farmer diagnostics.",
+                moreDetails: "Additional details about the project, technologies used, challenges faced, and outcomes.",
                 category: "dl",
                 images: ["mango-disease.jpg"], // Add more images here, e.g., ["mango-disease.jpg", "mango-disease2.jpg"]
                 tags: ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
@@ -1361,6 +1524,7 @@
             {
                 title: "Attendance Management System",
                 description: "Developed a face recognition-based attendance system using OpenCV and LBPH, integrated with MySQL for efficient classroom attendance tracking.",
+                moreDetails: "More information on implementation, accuracy rates, and integration details.",
                 category: "cv",
                 images: ["attendance-system.jpg"],
                 tags: ["Python", "OpenCV", "MySQL", "LBPH"],
@@ -1369,6 +1533,7 @@
             {
                 title: "College Management App",
                 description: "Created an Android app for college resource management with features like notifications, eBooks, and lecture integration, using Firebase and Material UI.",
+                moreDetails: "Details on user interface design, backend integration, and user feedback.",
                 category: "apps",
                 images: ["College.jpg"],
                 tags: ["Java", "Android Studio", "Firebase", "XML"]
@@ -1376,9 +1541,38 @@
             {
                 title: "Online Examination App",
                 description: "Designed an Android app for conducting online exams, featuring secure user authentication, question management, and result tracking with Firebase.",
+                moreDetails: "Security measures, exam timer implementation, and result analysis features.",
                 category: "apps",
                 images: ["exam-app.jpg"],
                 tags: ["Java", "Android Studio", "Firebase", "XML"]
+            }
+        ];
+
+        // Achievements Data
+        const achievements = [
+            {
+                title: "Paper Acceptance Notification",
+                date: "Conference Name | August 2025",
+                description: "Received acceptance for a research paper on advanced computer vision techniques.",
+                details: "Detailed description of the paper, its significance, and the conference details."
+            },
+            {
+                title: "Award for Outstanding Research",
+                date: "IIT Jodhpur | July 2025",
+                description: "Recognized for contributions in computer vision research.",
+                details: "Details about the award, including the criteria and impact of the research."
+            },
+            {
+                title: "Conference Participation Certificate",
+                date: "International Conference on AI | June 2025",
+                description: "Presented a paper on machine learning applications.",
+                details: "Information about the conference, presentation details, and outcomes."
+            },
+            {
+                title: "Class Topper in MCA",
+                date: "Pondicherry University | Jun 2024",
+                description: "Topped the class with the highest GPA.",
+                details: "Details about the academic performance and recognition received."
             }
         ];
 
@@ -1389,7 +1583,7 @@
             "MySQL", "Git", "Pandas", "Matplotlib", "Seaborn"
         ];
 
-        // Certifications Data (including publications and copyrighted works for search functionality)
+        // Certifications Data
         const certifications = [
             "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization",
             "SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices",
@@ -1523,6 +1717,44 @@
             scrollToTop.classList.toggle('visible', scrollTop > 200);
         });
 
+        // Achievements Slideshow
+        function initializeAchievementsSlideshow() {
+            const slideshow = document.querySelector('.achievements-slideshow');
+            const slides = slideshow.querySelectorAll('.achievement-slide');
+            const dots = slideshow.querySelectorAll('.achievement-dot');
+            let current = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                current = index;
+            }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => showSlide(i));
+            });
+
+            slides.forEach(slide => {
+                slide.addEventListener('click', () => {
+                    const details = slide.querySelector('.achievement-details');
+                    if (details.style.display === 'block') {
+                        details.style.display = 'none';
+                    } else {
+                        slides.forEach(s => s.querySelector('.achievement-details').style.display = 'none');
+                        details.style.display = 'block';
+                    }
+                });
+            });
+
+            if (slides.length > 1) {
+                setInterval(() => showSlide((current + 1) % slides.length), 5000);
+            }
+        }
+
         // Dynamic Projects Loading
         const projectsGrid = document.getElementById('projects-grid');
         function loadProjects(filter = 'all') {
@@ -1545,12 +1777,15 @@
                             <div class="project-tags">
                                 ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                             </div>
+                            <button class="read-more-btn">Read More</button>
+                            <div class="project-more-details">${project.moreDetails}</div>
                         </div>
                     `;
                     projectsGrid.appendChild(card);
                 }
             });
             initializeSlideshows();
+            initializeReadMore();
         }
 
         // Initialize Slideshows
@@ -1562,7 +1797,10 @@
                 let current = 0;
 
                 function show(index) {
-                    imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+                    imgs.forEach((img, i) => {
+                        img.classList.toggle('active', i === index);
+                        img.style.opacity = i === index ? '1' : '0';
+                    });
                     dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
                     current = index;
                 }
@@ -1584,8 +1822,26 @@
             });
         }
 
+        // Initialize Read More
+        function initializeReadMore() {
+            const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            readMoreBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const moreDetails = btn.nextElementSibling;
+                    if (moreDetails.style.display === 'block') {
+                        moreDetails.style.display = 'none';
+                        btn.textContent = 'Read More';
+                    } else {
+                        moreDetails.style.display = 'block';
+                        btn.textContent = 'Read Less';
+                    }
+                });
+            });
+        }
+
         loadProjects();
-        initializeSlideshows(); // For profile slideshow
+        initializeSlideshows();
+        initializeAchievementsSlideshow();
 
         // Project Filter
         const filterButtons = document.querySelectorAll('.filter-btn');
@@ -1662,12 +1918,18 @@
                 }
             });
 
+            achievements.forEach(achievement => {
+                if (achievement.title.toLowerCase().includes(query) || achievement.description.toLowerCase().includes(query)) {
+                    results.push({ type: 'achievement', value: achievement.title });
+                }
+            });
+
             results.forEach(result => {
                 const item = document.createElement('div');
                 item.classList.add('search-result-item');
                 item.textContent = `${result.type.charAt(0).toUpperCase() + result.type.slice(1)}: ${result.value}`;
                 item.addEventListener('click', () => {
-                    const sectionId = result.type === 'skill' ? 'skills' : result.type === 'project' ? 'projects' : result.section || 'certifications';
+                    const sectionId = result.type === 'skill' ? 'skills' : result.type === 'project' ? 'projects' : result.type === 'achievement' ? 'achievements' : result.section || 'certifications';
                     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
                     searchModal.style.display = 'none';
                     searchInput.value = '';
@@ -1681,15 +1943,19 @@
             }
         });
 
-        // Contact Form Submission (Simulation)
+        // Contact Form Submission with EmailJS
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            console.log('Form Submitted:', data);
-            alert(`Thank you, ${data.name}! Your message has been sent.`);
-            contactForm.reset();
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm) // Replace with your EmailJS service ID and template ID
+                .then(function(response) {
+                   console.log('SUCCESS!', response.status, response.text);
+                   alert('Thank you! Your message has been sent.');
+                   contactForm.reset();
+                }, function(error) {
+                   console.log('FAILED...', error);
+                   alert('Failed to send message. Please try again.');
+                });
         });
 
         // Scroll to Top
