@@ -1,24 +1,12 @@
 [
     {
-        "title": "Mango Blossom Diseases Detection",
-        "description": "Built a deep learning model using CNNs (VGG16, ResNet50) to classify mango blossom diseases from 1000 images. Deployed as an Android app for real-time farmer diagnostics.",
-        "moreDetails": "Additional details about the project, technologies used, challenges faced, and outcomes.",
-        "category": "dl",
-        "images": [
-            "https://raw.githubusercontent.com/nileshmishra610/your-repo/main/images/projects/mango1.jpg",
-            "https://raw.githubusercontent.com/nileshmishra610/your-repo/main/images/projects/mango2.jpg"
-        ],
-        "tags": ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
-        "link": "https://github.com/nileshmishra610"
-    },
-    {
         "title": "Attendance Management System",
         "description": "Developed a face recognition-based attendance system using OpenCV and LBPH, integrated with MySQL for efficient classroom attendance tracking.",
         "moreDetails": "More information on implementation, accuracy rates, and integration details.",
         "category": "cv",
         "images": [
             "/images/projects/attendance-system.PNG",
-            "/images/projects/attendance2.jpg"
+            
         ],
         "tags": ["Python", "OpenCV", "MySQL", "LBPH"],
         "link": "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
@@ -48,5 +36,17 @@
         ],
         "tags": ["Java", "Android Studio", "Firebase", "XML"],
         "link": ""
+    },
+    {
+        "title": "Mango Blossom Diseases Detection",
+        "description": "Built a deep learning model using CNNs (VGG16, ResNet50) to classify mango blossom diseases from 1000 images. Deployed as an Android app for real-time farmer diagnostics.",
+        "moreDetails": "Additional details about the project, technologies used, challenges faced, and outcomes.",
+        "category": "dl",
+        "images": [
+            "/images/projects/mango1.jpg",
+            "/images/projects/mango2.jpg"
+        ],
+        "tags": ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
+        "link": "https://github.com/nileshmishra610"
     }
 ]
