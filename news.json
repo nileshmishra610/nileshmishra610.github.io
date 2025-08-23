@@ -1,15 +1,16 @@
 [
-    {
-        "title": "Paper Accepted at ICIVC-2025 Conference",
-        "date": "June 2025",
-        "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
-        "details": "Detailed description of the paper, its significance, and the conference details."
-    },
+   
     {
         "title": "Invited Talk at IIT Jodhpur",
         "date": "July 2025",
         "description": "Delivered a talk on deep learning applications in urban planning.",
         "details": "Details about the talk, audience, and key takeaways."
+    },
+     {
+        "title": "Paper Accepted at ICIVC-2025 Conference",
+        "date": "June 2025",
+        "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
+        "details": "Detailed description of the paper, its significance, and the conference details."
     },
     {
         "title": "New Project Launch",
