@@ -5,8 +5,8 @@
         "moreDetails": "Additional details about the project, technologies used, challenges faced, and outcomes.",
         "category": "dl",
         "images": [
-            "https://drive.google.com/uc?id=MANGO_IMAGE1_FILE_ID",
-            "https://drive.google.com/uc?id=MANGO_IMAGE2_FILE_ID"
+            "https://raw.githubusercontent.com/nileshmishra610/your-repo/main/images/projects/mango1.jpg",
+            "https://raw.githubusercontent.com/nileshmishra610/your-repo/main/images/projects/mango2.jpg"
         ],
         "tags": ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
         "link": "https://github.com/nileshmishra610"
@@ -17,8 +17,8 @@
         "moreDetails": "More information on implementation, accuracy rates, and integration details.",
         "category": "cv",
         "images": [
-            "https://drive.google.com/uc?id=ATTENDANCE_IMAGE1_FILE_ID",
-            "https://drive.google.com/uc?id=ATTENDANCE_IMAGE2_FILE_ID"
+            "/images/projects/attendance-system.PNG",
+            "/images/projects/attendance2.jpg"
         ],
         "tags": ["Python", "OpenCV", "MySQL", "LBPH"],
         "link": "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
@@ -29,8 +29,8 @@
         "moreDetails": "Details on user interface design, backend integration, and user feedback.",
         "category": "apps",
         "images": [
-            "https://drive.google.com/uc?id=COLLEGE_IMAGE1_FILE_ID",
-            "https://drive.google.com/uc?id=COLLEGE_IMAGE2_FILE_ID"
+            "/images/projects/College.jpg",
+            "/images/projects/college2.jpg"
         ],
         "tags": ["Java", "Android Studio", "Firebase", "XML"],
         "link": ""
@@ -41,8 +41,10 @@
         "moreDetails": "Security measures, exam timer implementation, and result analysis features.",
         "category": "apps",
         "images": [
-            "https://drive.google.com/uc?id=EXAM_IMAGE1_FILE_ID",
-            "https://drive.google.com/uc?id=EXAM_IMAGE2_FILE_ID"
+            "/images/projects/exam-app.jpg",
+            "/images/projects/ExamAPP3.jpg"
+            "/images/projects/ExamAPP1.jpg"
+            "/images/projects/ExamAPP6.jpg"
         ],
         "tags": ["Java", "Android Studio", "Firebase", "XML"],
         "link": ""
