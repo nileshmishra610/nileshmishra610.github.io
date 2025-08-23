@@ -273,7 +273,7 @@
         .slideshow-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Changed to cover for uniform fit */
+            object-fit: cover; /* Uniform fit */
             position: absolute;
             top: 0;
             left: 0;
@@ -1154,15 +1154,9 @@
 
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
-        <div class="slideshow-container">
-            <img src=https://drive.google.com/drive/folders/1_6pQ2w2uuNBtdqmWVMAcmPOXoc0wmuGr" alt="Profile Image 1" class="slideshow-img active">
-            <img src="https://drive.google.com/file/d/1QNN_HxY6u1ewHpkgJqeHTfcmI4rZ4V_8/view?usp=drive_link" alt="Profile Image 2" class="slideshow-img">
-            <img src="https://drive.google.com/file/d/1bn0r87arhGtTODEEETn7BZgrHCFg9-bP/view?usp=drive_link" alt="Profile Image 3" class="slideshow-img">
-            <div class="slideshow-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+        <div class="slideshow-container" id="profile-slideshow">
+            <!-- Profile images will be loaded dynamically -->
+            <div class="slideshow-dots" id="profile-slideshow-dots"></div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Nilesh Mishra</h1>
@@ -1374,11 +1368,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
+        // Load Profile Images from GitHub
+        const githubRepoBaseUrl = 'https://raw.githubusercontent.com/nileshmishra610/your-repo/main/images/profile/';
+        const profileImageFilenames = [
+            'profile1.jpg',
+            'profile2.jpg',
+            'profile3.jpg'
+            // Add more image filenames here as needed
+        ];
+
+        const slideshowContainer = document.getElementById('profile-slideshow');
+        const slideshowDots = document.getElementById('profile-slideshow-dots');
+        slideshowContainer.innerHTML = ''; // Clear any existing content
+        slideshowDots.innerHTML = ''; // Clear existing dots
+
+        // Generate images and dots dynamically
+        profileImageFilenames.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${githubRepoBaseUrl}${filename}`;
+            img.alt = `Profile Image ${index + 1}`;
+            img.classList.add('slideshow-img');
+            if (index === 0) img.classList.add('active');
+            slideshowContainer.appendChild(img);
+
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            slideshowDots.appendChild(dot);
+        });
+
         // Load News from JSON
+        let newsItems = [];
         fetch('news.json')
             .then(response => response.json())
             .then(data => {
+                newsItems = data;
                 const newsList = document.getElementById('news-list');
+                newsList.innerHTML = '';
                 data.forEach(item => {
                     const li = document.createElement('li');
                     li.classList.add('news-item');
@@ -1394,33 +1420,34 @@
             });
 
         // Load Projects from JSON
+        let projects = [];
         fetch('projects.json')
             .then(response => response.json())
             .then(data => {
-                projects = data; // Update the projects array
+                projects = data;
                 loadProjects();
             });
 
         // Load Publications from JSON
+        let publications = [];
         fetch('publications.json')
             .then(response => response.json())
             .then(data => {
+                publications = data;
                 const publicationsList = document.getElementById('publications-list');
+                publicationsList.innerHTML = '';
                 data.forEach(item => {
                     const div = document.createElement('div');
                     div.classList.add('publication-item');
                     div.innerHTML = `
                         <div class="publication-details">
                             <h3>${item.title}</h3>
-                            <p>${item.details}</p>
+                            <p>${item.details}${item.link ? ` <a href="${item.link}" target="_blank">[Link]</a>` : ''}</p>
                         </div>
                     `;
                     publicationsList.appendChild(div);
                 });
             });
-
-        // Project Data (initial, will be overridden by JSON)
-        let projects = [];
 
         // Skills Data
         const skills = [
@@ -1665,6 +1692,7 @@
             });
         }
 
+        // Initialize projects and slideshows after JSON is loaded
         loadProjects();
         initializeSlideshows();
         initializeNewsTicker();
@@ -1738,6 +1766,12 @@
                 }
             });
 
+            publications.forEach(pub => {
+                if (pub.title.toLowerCase().includes(query) || pub.details.toLowerCase().includes(query)) {
+                    results.push({ type: 'publication', value: pub.title, section: 'publications' });
+                }
+            });
+
             certifications.forEach(cert => {
                 if (cert.toLowerCase().includes(query)) {
                     results.push({ type: 'certification', value: cert, section: cert.includes("Efficient Face Recognition") || cert.includes("SFLCDApp") ? 'publications' : 'certifications' });
@@ -1777,5 +1811,3 @@
     </script>
 </body>
 </html>
-
-
