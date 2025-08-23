@@ -236,7 +236,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 2rem;
             min-height: 100vh;
             position: relative;
@@ -267,18 +267,26 @@
             flex: 2;
             min-width: 300px;
             max-width: 700px;
+            order: 2; /* Move to right on desktop */
+        }
+
+        .hero-news {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            order: 1; /* Keep on left on desktop */
         }
 
         @media (min-width: 768px) {
             .hero {
                 flex-wrap: nowrap;
-                justify-content: space-between;
                 padding: 6rem 4rem;
             }
             .hero-main {
                 flex-direction: row;
                 text-align: left;
                 max-width: 800px;
+                justify-content: flex-end; /* Align content to the right */
             }
             .hero-news {
                 max-width: 350px;
@@ -293,6 +301,11 @@
             .hero-main, .hero-news {
                 width: 100%;
                 max-width: 100%;
+                order: initial; /* Stack vertically on mobile */
+            }
+            .hero-main {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -356,7 +369,7 @@
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
@@ -367,7 +380,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
             color: var(--accent-color);
             margin-bottom: 1rem;
@@ -378,13 +391,13 @@
         }
 
         .typed-text {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--secondary-color);
             font-weight: 600;
         }
 
         .hero-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #4b5563;
             margin-bottom: 1.5rem;
         }
@@ -402,7 +415,7 @@
         }
 
         .social-links a {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
             transition: all 0.3s ease;
         }
@@ -426,7 +439,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -1033,20 +1046,20 @@
                 font-size: 1.3rem;
             }
             .hero-title {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             .hero-subtitle, .typed-text {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .hero-text {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             .social-links a {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .download-btn {
                 padding: 1rem 2rem;
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             .slideshow-container {
                 max-width: 300px;
@@ -1151,19 +1164,19 @@
                 display: block;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .hero-subtitle, .typed-text {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             .hero-text {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .social-links a {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .download-btn {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .slideshow-container {
                 max-width: 200px;
@@ -1204,6 +1217,14 @@
 
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
+        <div class="hero-news" id="news">
+            <h2 class="section-title">News</h2>
+            <div class="news-ticker">
+                <ul id="news-list">
+                    <!-- News items will be loaded here -->
+                </ul>
+            </div>
+        </div>
         <div class="hero-main">
             <div class="slideshow-container" id="profile-slideshow">
                 <!-- Profile images will be loaded dynamically -->
@@ -1221,14 +1242,6 @@
                     <a href="mailto:nileshmishra610@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
                 <a href="cv.pdf" download="CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
-            </div>
-        </div>
-        <div class="hero-news" id="news">
-            <h2 class="section-title">News</h2>
-            <div class="news-ticker">
-                <ul id="news-list">
-                    <!-- News items will be loaded here -->
-                </ul>
             </div>
         </div>
     </section>
@@ -1420,11 +1433,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
         // Load Profile Images from Local Folder
-        const profileImageBasePath = 'images/Profile/';
+        const profileImageBasePath = 'images/profile/';
         const profileImageFilenames = [
-            'Profile1.jpg',
-            'Profile2.jpg',
-            'Profile3.jpg'
+            'profile1.jpg',
+            'profile2.jpg',
+            'profile3.jpg'
             // Add more image filenames here as needed
         ];
 
@@ -1874,4 +1887,3 @@
     </script>
 </body>
 </html>
-
