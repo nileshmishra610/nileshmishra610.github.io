@@ -267,14 +267,12 @@
             flex: 2;
             min-width: 300px;
             max-width: 700px;
-            order: 2; /* Move to right on desktop */
         }
 
         .hero-news {
             flex: 1;
             min-width: 250px;
             max-width: 350px;
-            order: 1; /* Keep on left on desktop */
         }
 
         @media (min-width: 768px) {
@@ -286,7 +284,7 @@
                 flex-direction: row;
                 text-align: left;
                 max-width: 800px;
-                justify-content: flex-end; /* Align content to the right */
+                transform: translateX(30px); /* Subtle right shift on desktop */
             }
             .hero-news {
                 max-width: 350px;
@@ -301,11 +299,11 @@
             .hero-main, .hero-news {
                 width: 100%;
                 max-width: 100%;
-                order: initial; /* Stack vertically on mobile */
             }
             .hero-main {
                 flex-direction: column;
                 text-align: center;
+                transform: none; /* No shift on mobile */
             }
         }
 
@@ -465,6 +463,7 @@
             flex: 1;
             min-width: 250px;
             max-width: 350px;
+            position: relative; /* For positioning scroll icon */
         }
 
         .dark-mode .hero-news {
@@ -482,6 +481,7 @@
             overflow: hidden;
             background: rgba(243, 244, 246, 0.7);
             border-radius: 8px;
+            position: relative; /* For scroll icon positioning */
         }
 
         .dark-mode .hero-news .news-ticker {
@@ -555,6 +555,37 @@
 
         .dark-mode .hero-news .news-details {
             background: rgba(31, 41, 55, 0.9);
+        }
+
+        /* News Scroll Icon */
+        .news-scroll-icon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            background: var(--card-bg);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .dark-mode .news-scroll-icon {
+            color: var(--secondary-color);
+            background: #1f2937;
+        }
+
+        .news-scroll-icon:hover {
+            color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: scale(1.1);
         }
 
         /* Sections */
@@ -1220,6 +1251,7 @@
         <div class="hero-news" id="news">
             <h2 class="section-title">News</h2>
             <div class="news-ticker">
+                <span class="news-scroll-icon"><i class="fas fa-chevron-up"></i></span>
                 <ul id="news-list">
                     <!-- News items will be loaded here -->
                 </ul>
@@ -1659,28 +1691,70 @@
             const ticker = document.querySelector('.news-ticker');
             const items = ticker.querySelectorAll('.news-item');
             const ul = ticker.querySelector('ul');
+            const scrollIcon = document.querySelector('.news-scroll-icon');
 
             // Ensure animation starts
             ul.style.animation = 'ticker-scroll 20s linear infinite';
 
+            // Pause animation on hover
+            ticker.addEventListener('mouseenter', () => {
+                ul.style.animationPlayState = 'paused';
+            });
+            ticker.addEventListener('mouseleave', () => {
+                if (!ticker.querySelector('.news-details[style*="display: block"]')) {
+                    ul.style.animationPlayState = 'running';
+                }
+            });
+
+            // Show/hide news details
             items.forEach(item => {
-                item.addEventListener('click', () => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     const details = item.querySelector('.news-details');
                     if (details.style.display === 'block') {
                         details.style.display = 'none';
+                        ul.style.animationPlayState = 'running';
                     } else {
                         items.forEach(i => i.querySelector('.news-details').style.display = 'none');
                         details.style.display = 'block';
                         ul.style.animationPlayState = 'paused';
                     }
                 });
-                // Resume animation when not interacting
-                item.addEventListener('mouseleave', () => {
-                    const details = item.querySelector('.news-details');
-                    if (details.style.display !== 'block') {
+            });
+
+            // Scroll to previous news item
+            scrollIcon.addEventListener('click', () => {
+                const tickerHeight = ticker.offsetHeight;
+                const ulHeight = ul.offsetHeight;
+                let currentTransform = getComputedStyle(ul).transform;
+                let currentY = currentTransform === 'none' ? 0 : parseFloat(currentTransform.split(',')[5]) || 0;
+
+                // Calculate height of one news item (approximate)
+                const itemHeight = ulHeight / items.length;
+
+                // Move up by one item height
+                let newY = currentY + itemHeight;
+
+                // If at the top, reset to bottom
+                if (newY >= 0) {
+                    newY = -(ulHeight - tickerHeight);
+                    ul.style.transition = 'none';
+                    ul.style.transform = `translateY(${newY}px)`;
+                    // Force reflow to reset animation
+                    ul.offsetHeight;
+                    ul.style.transition = 'transform 0.5s ease';
+                } else {
+                    ul.style.transition = 'transform 0.5s ease';
+                    ul.style.transform = `translateY(${newY}px)`;
+                }
+
+                // Pause animation briefly during manual scroll
+                ul.style.animationPlayState = 'paused';
+                setTimeout(() => {
+                    if (!ticker.querySelector('.news-details[style*="display: block"]')) {
                         ul.style.animationPlayState = 'running';
                     }
-                });
+                }, 1000);
             });
         }
 
