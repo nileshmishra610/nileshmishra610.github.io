@@ -234,13 +234,12 @@
         .hero {
             padding: 5rem 2rem;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            align-items: flex-start;
             justify-content: center;
             gap: 2rem;
             min-height: 100vh;
             position: relative;
-            text-align: center;
             background: linear-gradient(135deg, #e5e7eb, var(--bg-color));
         }
 
@@ -258,10 +257,55 @@
             opacity: 0.5;
         }
 
+        /* Hero Layout */
+        .hero-slideshow, .hero-content, .hero-news {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                padding: 6rem 4rem;
+            }
+            .hero-content {
+                text-align: left;
+            }
+            .hero-slideshow {
+                max-width: 250px;
+            }
+            .hero-news {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                padding: 4rem 1.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-slideshow, .hero-content, .hero-news {
+                width: 100%;
+                max-width: 100%;
+            }
+            .hero-slideshow {
+                max-width: 180px;
+            }
+            .hero-news {
+                max-width: 100%;
+            }
+        }
+
         /* Slideshow Styles */
         .slideshow-container {
             width: 100%;
-            max-width: 250px;
             height: 250px; /* Fixed height for uniform size */
             border-radius: 12px;
             overflow: hidden;
@@ -311,10 +355,6 @@
 
         .slideshow-container:hover .slideshow-img {
             transform: scale(1.1);
-        }
-
-        .hero-content {
-            max-width: 700px;
         }
 
         .hero-title {
@@ -405,6 +445,99 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
+        /* News Ticker in Hero */
+        .hero-news {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .hero-news {
+            background: #1f2937;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-news .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-news .news-ticker {
+            height: 250px; /* Match slideshow height */
+            overflow: hidden;
+            background: rgba(243, 244, 246, 0.7);
+            border-radius: 8px;
+        }
+
+        .dark-mode .hero-news .news-ticker {
+            background: rgba(31, 41, 55, 0.7);
+        }
+
+        .hero-news .news-ticker ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            animation: ticker-scroll 20s linear infinite;
+        }
+
+        .hero-news .news-ticker:hover ul {
+            animation-play-state: paused;
+        }
+
+        .hero-news .news-item {
+            padding: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .dark-mode .hero-news .news-item {
+            border-color: #6b7280;
+        }
+
+        .hero-news .news-item:hover {
+            background: rgba(243, 244, 246, 1);
+            transform: scale(1.02);
+        }
+
+        .dark-mode .hero-news .news-item:hover {
+            background: rgba(31, 41, 55, 1);
+        }
+
+        .hero-news .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .dark-mode .hero-news .news-title {
+            color: var(--secondary-color);
+        }
+
+        .hero-news .news-date, .hero-news .news-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .dark-mode .hero-news .news-date, .dark-mode .hero-news .news-desc {
+            color: #9ca3af;
+        }
+
+        .hero-news .news-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(243, 244, 246, 0.9);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .dark-mode .hero-news .news-details {
+            background: rgba(31, 41, 55, 0.9);
+        }
+
         /* Sections */
         .sections {
             padding: 3rem 2rem;
@@ -454,90 +587,6 @@
             bottom: -6px;
             left: 0;
             border-radius: 3px;
-        }
-
-        /* News Ticker */
-        .news-ticker {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 200px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 8px;
-            background: rgba(243, 244, 246, 0.7);
-        }
-
-        .dark-mode .news-ticker {
-            background: rgba(31, 41, 55, 0.7);
-        }
-
-        .news-ticker ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            animation: ticker-scroll 20s linear infinite;
-        }
-
-        .news-ticker:hover ul {
-            animation-play-state: paused;
-        }
-
-        .news-item {
-            padding: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .dark-mode .news-item {
-            border-color: #6b7280;
-        }
-
-        .news-item:hover {
-            background: rgba(243, 244, 246, 1);
-            transform: scale(1.02);
-        }
-
-        .dark-mode .news-item:hover {
-            background: rgba(31, 41, 55, 1);
-        }
-
-        .news-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .dark-mode .news-title {
-            color: var(--secondary-color);
-        }
-
-        .news-date, .news-desc {
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .dark-mode .news-date, .dark-mode .news-desc {
-            color: #9ca3af;
-        }
-
-        .news-details {
-            display: none;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(243, 244, 246, 0.9);
-            border-radius: 8px;
-        }
-
-        .dark-mode .news-details {
-            background: rgba(31, 41, 55, 0.9);
-        }
-
-        @keyframes ticker-scroll {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
         }
 
         .skills-list {
@@ -977,14 +1026,6 @@
             .nav-icons button {
                 font-size: 1.3rem;
             }
-            .hero {
-                padding: 6rem 4rem;
-                flex-direction: row;
-                text-align: left;
-            }
-            .slideshow-container {
-                max-width: 250px;
-            }
             .hero-title {
                 font-size: 3.5rem;
             }
@@ -1010,9 +1051,6 @@
             }
             .section-title {
                 font-size: 2.2rem;
-            }
-            .news-ticker {
-                max-width: 800px;
             }
             .skills-list {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1103,12 +1141,6 @@
             .menu-toggle {
                 display: block;
             }
-            .hero {
-                padding: 4rem 1.5rem;
-            }
-            .slideshow-container {
-                max-width: 180px;
-            }
             .hero-title {
                 font-size: 2rem;
             }
@@ -1120,9 +1152,6 @@
             }
             .section {
                 padding: 1.5rem;
-            }
-            .news-ticker {
-                max-width: 100%;
             }
             .project-slideshow {
                 height: 140px;
@@ -1154,9 +1183,11 @@
 
     <section class="hero" id="bio">
         <canvas id="three-canvas"></canvas>
-        <div class="slideshow-container" id="profile-slideshow">
-            <!-- Profile images will be loaded dynamically -->
-            <div class="slideshow-dots" id="profile-slideshow-dots"></div>
+        <div class="hero-slideshow">
+            <div class="slideshow-container" id="profile-slideshow">
+                <!-- Profile images will be loaded dynamically -->
+                <div class="slideshow-dots" id="profile-slideshow-dots"></div>
+            </div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Nilesh Mishra</h1>
@@ -1171,10 +1202,7 @@
             </div>
             <a href="cv.pdf" download="CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
         </div>
-    </section>
-
-    <div class="sections">
-        <div class="section" id="news">
+        <div class="hero-news" id="news">
             <h2 class="section-title">News</h2>
             <div class="news-ticker">
                 <ul id="news-list">
@@ -1182,7 +1210,9 @@
                 </ul>
             </div>
         </div>
+    </section>
 
+    <div class="sections">
         <div class="section" id="skills">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills-list">
@@ -1368,12 +1398,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
-        // Load Profile Images from GitHub
-        const githubRepoBaseUrl = '/images/Profile/';
+        // Load Profile Images from Local Folder
+        const profileImageBasePath = 'images/profile/';
         const profileImageFilenames = [
-            'Profile1.jpg',
-            'Profile2.jpg',
-            'Profile3.jpg'
+            'profile1.jpg',
+            'profile2.jpg',
+            'profile3.jpg'
             // Add more image filenames here as needed
         ];
 
@@ -1385,7 +1415,7 @@
         // Generate images and dots dynamically
         profileImageFilenames.forEach((filename, index) => {
             const img = document.createElement('img');
-            img.src = `${githubRepoBaseUrl}${filename}`;
+            img.src = `${profileImageBasePath}${filename}`;
             img.alt = `Profile Image ${index + 1}`;
             img.classList.add('slideshow-img');
             if (index === 0) img.classList.add('active');
@@ -1811,5 +1841,3 @@
     </script>
 </body>
 </html>
-
-
