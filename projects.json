@@ -5,9 +5,9 @@
     "moreDetails": "Used PCA to reduce NSL-KDD features from 41 to 10 while retaining 95% variance[cite: 18, 86]. Features a real-time Android app with Radar and Bar chart visualizations[cite: 6, 185]. Currently under review at ICICV-2026[cite: 1].",
     "category": "ml",
     "images": [
-        "https://raw.githubusercontent.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques/main/Screenshort/visualization.jpg",
-        "https://raw.githubusercontent.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques/main/Screenshort/Result.jpg",
-        "https://raw.githubusercontent.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques/main/Screenshort/visualization1.jpg"
+        "/images/projects/visualization.jpg",
+        "/images/projects/Result.jpg",
+        "/images/projects/visualization1.jpg"
     ],
     "tags": ["Python", "Flask", "Android", "Machine Learning", "PCA"],
     "link": "https://github.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques"
