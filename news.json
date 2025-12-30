@@ -1,17 +1,16 @@
-[
-   {
-    "title": "Paper Submitted to ICICV-2026",
-    "date": "December 2025",
-    "description": "Research paper on Network Anomaly Detection submitted for peer review.",
-    "details": "Our paper titled 'Anomaly Detection in Network Traffic Using Clustering Techniques' is currently under review at the International Conference on Intelligent Computing and System Control (ICICV-2026)."
-},
-   
+[ 
     {
         "title": "Invited Talk at IIT Jodhpur",
         "date": "July 2025",
         "description": "Delivered a talk on deep learning applications in urban planning.",
         "details": "Details about the talk, audience, and key takeaways."
     },
+      {
+    "title": "Paper Submitted to ICICV-2026",
+    "date": "December 2025",
+    "description": "Research paper on Network Anomaly Detection submitted for peer review.",
+    "details": "Our paper titled 'Anomaly Detection in Network Traffic Using Clustering Techniques' is currently under review at the International Conference on Intelligent Computing and System Control (ICICV-2026)."
+},
      {
         "title": "Paper Accepted at ICIVC-2025 Conference",
         "date": "June 2025",
