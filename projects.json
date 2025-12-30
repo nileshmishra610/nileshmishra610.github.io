@@ -1,5 +1,16 @@
 [
     {
+    "title": "Real-time Network Anomaly Detection System",
+    "description": "Developed an end-to-end unsupervised learning framework using KMeans, DBSCAN, and GMM to detect network intrusions. Features a real-time deployment pipeline with a Flask API and an Android app for live visualization.",
+    "moreDetails": "Implemented on the NSL-KDD dataset with PCA for dimensionality reduction (from 41 to 10 features). The system achieves sub-100ms latency on mobile devices. Research paper currently under review at ICICV-2026.",
+    "category": "ml",
+    "images": [
+        "https://github.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques/blob/main/Screenshort/visualization.jpg"
+    ],
+    "tags": ["Python", "Flask", "Android (Java)", "Scikit-Learn", "PCA"],
+    "link": "https://github.com/nileshmishra610" 
+},
+    {
         "title": "Attendance Management System",
         "description": "Developed a face recognition-based attendance system using OpenCV and LBPH, integrated with MySQL for efficient classroom attendance tracking.",
         "moreDetails": "More information on implementation, accuracy rates, and integration details.",
