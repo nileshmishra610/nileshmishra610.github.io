@@ -1,9 +1,9 @@
 [ 
     {
-        "title": "Invited Talk at IIT Jodhpur",
-        "date": "July 2025",
-        "description": "Delivered a talk on deep learning applications in urban planning.",
-        "details": "Details about the talk, audience, and key takeaways."
+        "title": "Paper Accepted at CML-2026 Conference",
+        "date": "March 2026",
+        "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
+        "details": "Detailed description of the paper, its significance, and the conference details."
     },
       {
     "title": "Paper Submitted to ICICV-2026",
@@ -23,10 +23,4 @@
         "description": "Launched a new Android app for real-time crop disease detection.",
         "details": "Information about the project, its impact, and deployment details."
     },
-    {
-        "title": "Collaboration with GeoAI4Cities Lab",
-        "date": "May 2025",
-        "description": "Started a collaboration on a GeoAI project for urban accessibility.",
-        "details": "Details about the collaboration, objectives, and expected outcomes."
-    }
 ]
