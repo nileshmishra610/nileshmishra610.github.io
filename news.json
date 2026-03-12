@@ -5,13 +5,13 @@
         "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
         "details": "Detailed description of the paper, its significance, and the conference details."
     },
-      {
-    "title": "Paper Submitted to ICICV-2026",
-    "date": "December 2025",
-    "description": "Research paper on Network Anomaly Detection submitted for peer review.",
-    "details": "Our paper titled 'Anomaly Detection in Network Traffic Using Clustering Techniques' is currently under review at the International Conference on Intelligent Computing and System Control (ICICV-2026)."
-},
-     {
+    {
+        "title": "Paper Submitted to ICICV-2026",
+        "date": "December 2025",
+        "description": "Research paper on Network Anomaly Detection submitted for peer review.",
+        "details": "Our paper titled 'Anomaly Detection in Network Traffic Using Clustering Techniques' is currently under review at the International Conference on Intelligent Computing and System Control (ICICV-2026)."
+    },
+    {
         "title": "Paper Accepted at ICIVC-2025 Conference",
         "date": "June 2025",
         "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
