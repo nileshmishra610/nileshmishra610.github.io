@@ -1,23 +1,58 @@
 [
     {
-            "title": "SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices",
-            "details": "Published, 2026 : CML-2026",
-            "link": "#"
+        "title": "Accuracy Is Not the Bottleneck: Deploying Clustering-Based Intrusion Detection on Mobile Devices",
+        "authors": ["Nilesh Mishra", "Juhi Chaudhary", "Shasank Dixit"],
+        "type": "Preprint",
+        "venue": "ResearchGate",
+        "date": "December 2025",
+        "featured": true,
+        "links": {
+            "ResearchGate": "https://www.researchgate.net/publication/415247367_Accuracy_Is_Not_the_Bottleneck_Deploying_Clustering-Based_Intrusion_Detection_on_Mobile_Devices",
+            "Code": "https://github.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques"
+        }
     },
-    
     {
-            "title": "Anomaly Detection in Network Traffic Using Clustering Techniques",
-            "details": "Under Review: ICICV-2026",
-            "link": "#"
+        "title": "SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices",
+        "authors": ["Nilesh Mishra", "Manish Kumar", "Aman Raj"],
+        "type": "Conference Paper",
+        "venue": "CML-2026",
+        "date": "March 2026",
+        "featured": false,
+        "links": {
+            "ResearchGate": "https://www.researchgate.net/publication/415032990_SFLCDApp_Simulated_Federated_Learning_for_Crop_Disease_Detection_Using_Lightweight_CNN_Models_on_Android_Devices"
+        }
     },
     {
         "title": "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization",
-        "details": "Published, 2025",
-        "link": "https://doi.org/10.1007/978-3-032-10670-4_11"
+        "authors": ["Nilesh Mishra", "Manish Kumar", "Aditya Kumar Anupam", "R. Subramanian"],
+        "type": "Conference Paper",
+        "venue": "Springer",
+        "date": "January 2026",
+        "featured": false,
+        "links": {
+            "DOI": "https://doi.org/10.1007/978-3-032-10670-4_11",
+            "ResearchGate": "https://www.researchgate.net/publication/399467341_Efficient_Face_Recognition-Based_Attendance_System_with_Adaptive_Lighting_and_Pose_Normalization"
+        }
     },
     {
-            "title": "Deep Learning Based Approach to Quantify the Emergency Vehicle Accessibility in Urban Areas Using LiDAR and Images",
-            "details": "Patent Filed, Indian Patent Office, 2025",
-            "link": "#"
+        "title": "SA-HANet: Symptom-Aware Hierarchical Attention Network for Cross-Orchard Mango Blossom Disease Detection",
+        "authors": ["Nilesh Mishra", "Bhabya Kumari"],
+        "type": "Preprint",
+        "venue": "ResearchGate",
+        "date": "July 2025",
+        "featured": false,
+        "links": {
+            "ResearchGate": "https://www.researchgate.net/publication/415194947_SA-HANet_Symptom-Aware_Hierarchical_Attention_Network_for_Cross-Orchard_Mango_Blossom_Disease_Detection"
+        }
+    },
+    {
+        "title": "Deep Learning Based Approach to Quantify the Emergency Vehicle Accessibility in Urban Areas Using LiDAR and Images",
+        "authors": [],
+        "type": "Patent",
+        "venue": "Indian Patent Office",
+        "date": "2025",
+        "status": "Filed",
+        "featured": false,
+        "links": {}
     }
 ]
