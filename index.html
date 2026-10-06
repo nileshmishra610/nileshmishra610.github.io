@@ -3,37 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nilesh Mishra | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Nilesh Mishra | IndiaAI Fellow | PhD Scholar, IIT Jodhpur</title>
+    <meta name="description" content="Nilesh Mishra — IndiaAI Fellow and PhD scholar in CSE at IIT Jodhpur (3DVis Lab), working on 3D vision with satellite imagery and LiDAR point clouds.">
+    <meta property="og:title" content="Nilesh Mishra | IndiaAI Fellow">
+    <meta property="og:description" content="PhD scholar at IIT Jodhpur working on 3D vision, satellite imagery and LiDAR point clouds.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/Profile/Profile1.jpg">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary-color: #1e3a8a; /* Deep Blue */
-            --secondary-color: #f59e0b; /* Amber Gold */
-            --accent-color: #6b7280; /* Gray */
-            --text-color: #1f2937; /* Dark Gray */
-            --bg-color: #f3f4f6; /* Light Gray */
+            --primary-color: #1e3a8a;
+            --secondary-color: #f59e0b;
+            --accent-color: #6b7280;
+            --text-color: #1f2937;
+            --muted-color: #6b7280;
+            --bg-color: #f3f4f6;
             --card-bg: #ffffff;
+            --item-bg: rgba(243, 244, 246, 0.7);
+            --item-bg-hover: rgba(243, 244, 246, 1);
+            --nav-height: 72px;
+        }
+
+        .dark-mode {
+            --text-color: #e5e7eb;
+            --muted-color: #9ca3af;
+            --bg-color: #111827;
+            --card-bg: #1f2937;
+            --item-bg: rgba(55, 65, 81, 0.5);
+            --item-bg-hover: rgba(55, 65, 81, 0.9);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .dark-mode {
-            background: #1f2937;
-            color: #e5e7eb;
+        a {
+            color: var(--secondary-color);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+
+        section[id], .section[id] {
+            scroll-margin-top: calc(var(--nav-height) + 1rem);
         }
 
         /* Scroll Progress */
@@ -45,7 +78,6 @@
             height: 4px;
             background: var(--secondary-color);
             z-index: 1001;
-            transition: width 0.3s ease;
         }
 
         /* Navigation */
@@ -63,18 +95,24 @@
         }
 
         .dark-mode nav {
-            background: #1f2937;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
+            text-decoration: none;
         }
 
         .dark-mode .logo {
             color: var(--secondary-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .nav-links {
@@ -86,14 +124,9 @@
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
-            font-size: 1rem;
-            text-transform: uppercase;
+            font-size: 0.95rem;
             position: relative;
             transition: color 0.3s ease;
-        }
-
-        .dark-mode .nav-links a {
-            color: #e5e7eb;
         }
 
         .nav-links a::after {
@@ -107,17 +140,14 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.current::after {
             width: 100%;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.current {
             color: var(--secondary-color);
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1rem;
         }
 
         .nav-icons button {
@@ -129,10 +159,6 @@
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .dark-mode .nav-icons button {
-            color: #e5e7eb;
-        }
-
         .nav-icons button:hover {
             color: var(--secondary-color);
             transform: scale(1.1);
@@ -140,22 +166,21 @@
 
         .menu-toggle {
             display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
         }
 
-        /* Search Modal */
-        .search-modal {
+        /* Modals (search + image) */
+        .search-modal, .image-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: rgba(0, 0, 0, 0.8);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+        }
+
+        .search-modal.open, .image-modal.open {
+            display: flex;
         }
 
         .search-modal-content {
@@ -163,44 +188,36 @@
             padding: 1.5rem;
             border-radius: 10px;
             width: 90%;
-            max-width: 400px;
+            max-width: 480px;
             position: relative;
         }
 
-        .dark-mode .search-modal-content {
-            background: #1f2937;
-        }
-
-        .search-modal-close {
+        .modal-close {
             position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            font-size: 1.2rem;
+            top: 0.4rem;
+            right: 0.6rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            background: none;
+            border: none;
             cursor: pointer;
             color: var(--text-color);
         }
 
-        .dark-mode .search-modal-close {
-            color: #e5e7eb;
-        }
-
-        .search-modal-close:hover {
+        .modal-close:hover {
             color: var(--secondary-color);
         }
 
         .search-input {
             width: 100%;
             padding: 0.8rem;
+            margin-top: 1rem;
             font-size: 1rem;
+            font-family: inherit;
             border: 2px solid var(--accent-color);
             border-radius: 8px;
             background: transparent;
             color: var(--text-color);
-        }
-
-        .dark-mode .search-input {
-            border-color: #6b7280;
-            color: #e5e7eb;
         }
 
         .search-input:focus {
@@ -210,29 +227,47 @@
 
         .search-results {
             margin-top: 1rem;
-            max-height: 200px;
+            max-height: 260px;
             overflow-y: auto;
         }
 
         .search-result-item {
-            padding: 0.5rem;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.6rem 0.5rem;
+            border: none;
             border-bottom: 1px solid var(--accent-color);
+            background: none;
+            color: var(--text-color);
+            font: inherit;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.2s ease;
         }
 
-        .dark-mode .search-result-item {
-            border-color: #6b7280;
+        .search-result-item small {
+            color: var(--muted-color);
+            margin-right: 0.4rem;
         }
 
-        .search-result-item:hover {
+        .search-result-item:hover, .search-result-item:focus-visible {
             background: var(--secondary-color);
             color: var(--primary-color);
         }
 
-        /* Hero Section */
+        .search-result-item.empty {
+            cursor: default;
+        }
+
+        .search-result-item.empty:hover {
+            background: none;
+            color: var(--text-color);
+        }
+
+        /* Hero */
         .hero {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem 4rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -240,127 +275,85 @@
             gap: 2rem;
             min-height: 100vh;
             position: relative;
+            isolation: isolate; /* keeps the 3D canvas visible above the hero background */
             text-align: center;
             background: linear-gradient(135deg, #e5e7eb, var(--bg-color));
         }
 
         .dark-mode .hero {
-            background: linear-gradient(135deg, #374151, #1f2937);
+            background: linear-gradient(135deg, #374151, #111827);
         }
 
         #three-canvas {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
             opacity: 0.5;
+            pointer-events: none;
         }
 
-        /* Hero Layout */
         .slideshow-container {
-            max-width: 300px;
+            width: 300px;
+            max-width: 100%;
             height: 300px;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
+            flex-shrink: 0;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             background: radial-gradient(circle, rgba(245, 158, 11, 0.2), transparent);
         }
 
-        .hero-content {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 1rem; /* Equal margins to center between slideshow and news */
-        }
-
-        .hero-news {
-            max-width: 350px;
-        }
-
-        @media (min-width: 768px) {
-            .hero {
-                flex-wrap: nowrap;
-                padding: 6rem 4rem;
-            }
-            .slideshow-container {
-                order: 1;
-            }
-            .hero-content {
-                order: 2;
-                text-align: center;
-            }
-            .hero-news {
-                order: 3;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .hero {
-                padding: 4rem 1.5rem;
-                flex-direction: column;
-            }
-            .slideshow-container, .hero-content, .hero-news {
-                width: 100%;
-                max-width: 100%;
-            }
-            .slideshow-container {
-                max-width: 250px;
-                height: 250px;
-                order: 1;
-            }
-            .hero-content {
-                order: 2;
-                margin: 0;
-            }
-            .hero-news {
-                order: 3;
-            }
-        }
-
-        /* Slideshow Styles */
         .slideshow-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            cursor: pointer;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease;
+            cursor: zoom-in;
         }
 
         .slideshow-img.active {
             opacity: 1;
-            position: relative;
         }
 
-        .slideshow-dots {
+        .slideshow-container:hover .slideshow-img.active {
+            transform: scale(1.05);
+        }
+
+        .slideshow-dots, .project-slideshow-dots {
             position: absolute;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 8px;
+            z-index: 2;
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
+        .dot, .project-dot {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: none;
             background: var(--accent-color);
             border-radius: 50%;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
-        .dot.active {
+        .dot.active, .project-dot.active {
             background: var(--secondary-color);
         }
 
-        .slideshow-container:hover .slideshow-img {
-            transform: scale(1.1);
+        .hero-content {
+            flex: 1;
+            max-width: 520px;
+            margin: 0 auto;
         }
 
         .hero-title {
@@ -374,25 +367,55 @@
             color: var(--secondary-color);
         }
 
+        .fellow-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.9rem;
+            margin-bottom: 0.8rem;
+            border-radius: 999px;
+            border: 1.5px solid var(--secondary-color);
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .dark-mode .fellow-badge {
+            color: var(--secondary-color);
+        }
+
+        .fellow-badge i {
+            color: var(--secondary-color);
+        }
+
+        .fellow-badge:hover {
+            background: rgba(245, 158, 11, 0.25);
+            transform: translateY(-1px);
+        }
+
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            color: var(--accent-color);
+            color: var(--muted-color);
             margin-bottom: 1rem;
         }
 
-        .dark-mode .hero-subtitle {
-            color: #9ca3af;
+        .hero-subtitle a {
+            text-decoration: none;
         }
 
         .typed-text {
-            font-size: 1.4rem;
             color: var(--secondary-color);
             font-weight: 600;
+            border-right: 2px solid var(--secondary-color);
+            padding-right: 2px;
         }
 
         .hero-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #4b5563;
             margin-bottom: 1.5rem;
         }
@@ -404,7 +427,7 @@
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -434,7 +457,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -448,171 +471,135 @@
             background: var(--secondary-color);
             color: var(--primary-color);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
-        /* News Ticker in Hero */
+        /* News */
         .hero-news {
+            width: 350px;
+            max-width: 100%;
+            flex-shrink: 0;
             background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .dark-mode .hero-news {
-            background: #1f2937;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
         }
 
         .hero-news .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.6rem;
         }
 
-        .hero-news .news-ticker {
-            height: 250px;
-            overflow-y: auto;
-            background: rgba(243, 244, 246, 0.7);
+        .news-ticker {
+            height: 280px;
+            overflow: hidden;
+            background: var(--item-bg);
             border-radius: 8px;
             position: relative;
-            scrollbar-width: thin;
-            scrollbar-color: var(--secondary-color) var(--accent-color);
         }
 
-       .dark-mode .hero-news .news-ticker {
-            background: rgba(31, 41, 55, 0.7);
+        .news-ticker::before, .news-ticker::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 24px;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* Custom Scrollbar */
-        .hero-news .news-ticker::-webkit-scrollbar {
-            width: 8px;
+        .news-ticker::before {
+            top: 0;
+            background: linear-gradient(var(--card-bg), transparent);
         }
 
-        .hero-news .news-ticker::-webkit-scrollbar-track {
-            background: var(--accent-color);
-            border-radius: 8px;
+        .news-ticker::after {
+            bottom: 0;
+            background: linear-gradient(transparent, var(--card-bg));
         }
 
-        .hero-news .news-ticker::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 8px;
-        }
-
-        .hero-news .news-ticker::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
-        }
-
-        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-track {
-            background: #4b5563;
-        }
-
-        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-        }
-
-        .dark-mode .hero-news .news-ticker::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
-        }
-
-        .hero-news .news-ticker ul {
+        .news-track {
             list-style: none;
-            padding: 0.5rem; /* Added padding to ensure first item is fully visible */
-            margin: 0;
-            animation: ticker-scroll 20s linear infinite;
+            animation: ticker-scroll var(--ticker-duration, 30s) linear infinite;
         }
 
-       .hero-news .news-ticker:hover ul {
+        .news-ticker:hover .news-track,
+        .news-ticker:focus-within .news-track,
+        .news-ticker.paused .news-track {
             animation-play-state: paused;
         }
 
         @keyframes ticker-scroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
+            from { transform: translateY(0); }
+            to { transform: translateY(-50%); }
         }
 
-        .hero-news .news-item {
-            padding: 1rem;
+        .news-item {
+            padding: 0.9rem 1rem;
             cursor: pointer;
+            border-bottom: 1px solid rgba(107, 114, 128, 0.35);
             transition: background 0.3s ease;
-            border-bottom: 1px solid var(--accent-color);
         }
 
-        .dark-mode .hero-news .news-item {
-            border-color: #6b7280;
+        .news-item:hover, .news-item:focus-visible {
+            background: var(--item-bg-hover);
         }
 
-        .hero-news .news-item:hover {
-            background: rgba(243, 244, 246, 1);
-            transform: scale(1.02);
+        .news-item.highlight .news-title::before {
+            content: '\f559';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-right: 0.4rem;
         }
 
-        .dark-mode .hero-news .news-item:hover {
-            background: rgba(31, 41, 55, 1);
-        }
-
-        .hero-news .news-title {
-            font-size: 1.2rem;
+        .news-title {
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
 
-        .dark-mode .hero-news .news-title {
+        .dark-mode .news-title {
             color: var(--secondary-color);
         }
 
-        .hero-news .news-date, .hero-news .news-desc {
-            font-size: 0.9rem;
-            color: #6b7280;
+        .news-date, .news-desc {
+            font-size: 0.85rem;
+            color: var(--muted-color);
         }
 
-        .dark-mode .hero-news .news-date, .dark-mode .hero-news .news-desc {
-            color: #9ca3af;
-        }
-
-        .hero-news .news-details {
+        .news-details {
             display: none;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(243, 244, 246, 0.9);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .dark-mode .hero-news .news-details {
-            background: rgba(31, 41, 55, 0.9);
-        }
-
-        /* News Scroll Icon */
-        .news-scroll-icon {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            font-size: 1.2rem;
-            color: var(--primary-color);
+            margin-top: 0.7rem;
+            padding: 0.8rem;
             background: var(--card-bg);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            z-index: 10;
+            border-radius: 8px;
+            font-size: 0.85rem;
         }
 
-        .dark-mode .news-scroll-icon {
-            color: var(--secondary-color);
-            background: #1f2937;
+        .news-item.open .news-details {
+            display: block;
         }
 
-        .news-scroll-icon:hover {
-            color: var(--secondary-color);
-            background: var(--accent-color);
-            transform: scale(1.1);
+        @media (min-width: 768px) {
+            .hero {
+                flex-wrap: nowrap;
+                padding: 7rem 4rem 4rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+                flex-direction: column;
+            }
+            .slideshow-container {
+                width: 250px;
+                height: 250px;
+            }
+            .hero-news {
+                width: 100%;
+            }
         }
 
         /* Sections */
@@ -630,12 +617,7 @@
             margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-
-        .dark-mode .section {
-            background: #1f2937;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .section.visible {
@@ -666,14 +648,18 @@
             border-radius: 3px;
         }
 
+        .sub-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--muted-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* Skills */
         .skills-list {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
-        }
-
-        .skill-item {
-            margin-bottom: 1rem;
         }
 
         .skill-name {
@@ -706,26 +692,19 @@
             transition: width 1s ease;
         }
 
+        /* Timeline & list items */
         .experience-item, .education-item, .certification-item, .publication-item {
             position: relative;
             margin-bottom: 1.5rem;
             padding: 1rem;
-            background: rgba(243, 244, 246, 0.7);
+            background: var(--item-bg);
             border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode .experience-item, .dark-mode .education-item, .dark-mode .certification-item, .dark-mode .publication-item {
-            background: rgba(31, 41, 55, 0.7);
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .experience-item:hover, .education-item:hover, .certification-item:hover, .publication-item:hover {
-            background: rgba(243, 244, 246, 1);
+            background: var(--item-bg-hover);
             transform: translateX(5px);
-        }
-
-        .dark-mode .experience-item:hover, .dark-mode .education-item:hover, .dark-mode .certification-item:hover, .dark-mode .publication-item:hover {
-            background: rgba(31, 41, 55, 1);
         }
 
         .experience-details h3, .education-details h3, .certification-details h3, .publication-details h3 {
@@ -736,11 +715,7 @@
 
         .experience-details p, .education-details p, .certification-details p, .publication-details p {
             font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .dark-mode .experience-details p, .dark-mode .education-details p, .dark-mode .certification-details p, .dark-mode .publication-details p {
-            color: #9ca3af;
+            color: var(--muted-color);
         }
 
         .education-timeline, .experience-timeline {
@@ -779,6 +754,117 @@
             background: var(--secondary-color);
         }
 
+        /* Award highlight (IndiaAI Fellowship) */
+        .award-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            border-left: 4px solid var(--secondary-color);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .award-item:hover {
+            background: rgba(245, 158, 11, 0.18);
+        }
+
+        .award-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            background: var(--secondary-color);
+        }
+
+        /* Publications */
+        .pub-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .pub-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .dark-mode .pub-badge {
+            background: #374151;
+            color: #e5e7eb;
+        }
+
+        .pub-badge.preprint {
+            background: #0f766e;
+            color: #ffffff;
+        }
+
+        .pub-badge.patent {
+            background: #7c3aed;
+            color: #ffffff;
+        }
+
+        .pub-date {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+        }
+
+        .pub-authors {
+            margin-bottom: 0.3rem;
+        }
+
+        .pub-authors strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.4rem;
+        }
+
+        .pub-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .publication-item.featured {
+            border: 2px solid var(--secondary-color);
+            background: rgba(245, 158, 11, 0.08);
+            padding: 1.4rem;
+        }
+
+        .publication-item.featured h3 {
+            font-size: 1.25rem;
+        }
+
+        .featured-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.4rem;
+        }
+
+        /* Projects */
         .projects-filter {
             display: flex;
             gap: 1rem;
@@ -793,6 +879,7 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             border: none;
+            font-family: inherit;
             font-weight: 500;
             font-size: 0.9rem;
             cursor: pointer;
@@ -806,7 +893,6 @@
         .filter-btn.active, .filter-btn:hover {
             background: var(--secondary-color);
             color: var(--primary-color);
-            transform: scale(1.05);
         }
 
         .projects-grid {
@@ -819,13 +905,14 @@
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .dark-mode .project-card {
-            background: #1f2937;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: #273244;
         }
 
         .project-card:hover {
@@ -836,10 +923,9 @@
         .project-slideshow {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 180px;
             overflow: hidden;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            background: var(--item-bg);
         }
 
         .project-slideshow-img {
@@ -847,45 +933,30 @@
             height: 100%;
             object-fit: contain;
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            cursor: pointer;
+            cursor: zoom-in;
         }
 
         .project-slideshow-img.active {
             opacity: 1;
         }
 
-        .project-slideshow-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .project-placeholder {
+            height: 100%;
             display: flex;
-            gap: 8px;
-        }
-
-        .project-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .project-dot.active {
-            background: var(--secondary-color);
-        }
-
-        .project-card:hover .project-slideshow-img {
-            transform: scale(1.05);
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-color);
         }
 
         .project-content {
             padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-title {
@@ -901,12 +972,8 @@
 
         .project-desc {
             font-size: 0.9rem;
-            color: #6b7280;
+            color: var(--muted-color);
             margin-bottom: 1rem;
-        }
-
-        .dark-mode .project-desc {
-            color: #9ca3af;
         }
 
         .project-tags {
@@ -922,15 +989,9 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s ease;
         }
 
         .dark-mode .project-tag {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .project-tag:hover {
             background: var(--secondary-color);
             color: var(--primary-color);
         }
@@ -940,63 +1001,50 @@
             border: none;
             color: var(--secondary-color);
             cursor: pointer;
+            font-family: inherit;
             font-weight: 600;
-            margin-top: 0.5rem;
-            display: inline-block;
+            margin-top: 0.8rem;
+            align-self: flex-start;
         }
 
         .project-more-details {
             display: none;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             padding: 1rem;
-            background: rgba(243, 244, 246, 0.7);
+            background: var(--item-bg);
             border-radius: 8px;
+            font-size: 0.9rem;
         }
 
-        .dark-mode .project-more-details {
-            background: rgba(31, 41, 55, 0.7);
+        .project-more-details.open {
+            display: block;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--muted-color);
+            padding: 1rem;
         }
 
         /* Image Modal */
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
         .image-modal-content {
             position: relative;
             max-width: 90%;
             max-height: 90%;
         }
 
+        .image-modal .modal-close {
+            top: -2rem;
+            right: 0;
+            color: #ffffff;
+        }
+
         #enlarged-image {
-            width: auto;
-            height: auto;
             max-width: 90vw;
-            max-height: 90vh;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
-        }
-
-        .image-modal-close {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            font-size: 1.5rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        .image-modal-close:hover {
-            color: var(--secondary-color);
+            display: block;
         }
 
         /* Scroll to Top */
@@ -1006,8 +1054,9 @@
             right: 1rem;
             background: var(--primary-color);
             color: #ffffff;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1015,6 +1064,7 @@
             font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
         }
@@ -1026,11 +1076,11 @@
 
         .scroll-to-top.visible {
             opacity: 1;
+            visibility: visible;
         }
 
         .scroll-to-top:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         /* Footer */
@@ -1047,77 +1097,43 @@
             background: #1f2937;
         }
 
-        .footer-links {
+        .footer-links, .footer-social {
             display: flex;
             justify-content: center;
             gap: 1.2rem;
-            margin-bottom: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a, .footer-social a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .footer-links a {
-            color: #ffffff;
-            text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-top: 1rem;
         }
 
         .footer-social a {
             font-size: 1.4rem;
-            color: #ffffff;
-            transition: all 0.3s ease;
         }
 
-        .footer-social a:hover {
+        .footer-links a:hover, .footer-social a:hover {
             color: var(--secondary-color);
-            transform: scale(1.2);
         }
 
-        /* Media Queries */
+        /* Larger screens */
         @media (min-width: 768px) {
             nav {
                 padding: 1.2rem 4rem;
             }
-            .logo {
-                font-size: 2rem;
-            }
-            .nav-links {
-                gap: 2rem;
-            }
-            .nav-links a {
-                font-size: 1rem;
-            }
-            .nav-icons button {
-                font-size: 1.3rem;
-            }
             .hero-title {
-                font-size: 3.5rem;
+                font-size: 3.4rem;
             }
-            .hero-subtitle, .typed-text {
-                font-size: 1.6rem;
-            }
-            .hero-text {
-                font-size: 1.2rem;
-            }
-            .social-links a {
-                font-size: 1.8rem;
-            }
-            .download-btn {
-                padding: 1rem 2rem;
-                font-size: 1.2rem;
+            .hero-subtitle {
+                font-size: 1.5rem;
             }
             .sections {
                 padding: 4rem;
@@ -1133,18 +1149,8 @@
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
-            .skill-name {
-                font-size: 1.1rem;
-            }
-            .skill-bar {
-                height: 8px;
-            }
             .education-timeline, .experience-timeline {
                 padding-left: 2rem;
-            }
-            .education-item, .experience-item, .certification-item, .publication-item {
-                padding: 1.2rem;
-                margin-bottom: 2rem;
             }
             .education-item::before, .experience-item::before {
                 left: -1.8rem;
@@ -1152,7 +1158,7 @@
                 height: 12px;
             }
             .education-details h3, .experience-details h3, .certification-details h3, .publication-details h3 {
-                font-size: 1.3rem;
+                font-size: 1.25rem;
             }
             .education-details p, .experience-details p, .certification-details p, .publication-details p {
                 font-size: 1rem;
@@ -1164,53 +1170,24 @@
             .project-slideshow {
                 height: 200px;
             }
-            .project-title {
-                font-size: 1.4rem;
-            }
-            .project-desc {
-                font-size: 1rem;
-            }
-            .project-tag {
-                font-size: 0.85rem;
-            }
-            .scroll-to-top {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-                bottom: 1.5rem;
-                right: 1.5rem;
-            }
             footer {
                 padding: 3rem;
             }
-            .footer-links {
-                gap: 2rem;
-            }
-            .footer-links a {
-                font-size: 1rem;
-            }
-            .footer-social {
-                gap: 1.5rem;
-            }
-            .footer-social a {
-                font-size: 1.6rem;
-            }
         }
 
-        @media (max-width: 767px) {
+        /* Medium screens: nav links get tight, so collapse earlier */
+        @media (max-width: 1100px) {
             .nav-links {
                 display: none;
                 flex-direction: column;
+                gap: 1rem;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
                 background: var(--card-bg);
-                padding: 1rem;
+                padding: 1rem 2rem;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
-            .dark-mode .nav-links {
-                background: #1f2937;
             }
             .nav-links.active {
                 display: flex;
@@ -1218,29 +1195,53 @@
             .menu-toggle {
                 display: block;
             }
+        }
+
+        @media (max-width: 767px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
             .hero-title {
                 font-size: 2.2rem;
             }
-            .hero-subtitle, .typed-text {
-                font-size: 1.1rem;
+            .hero-subtitle {
+                font-size: 1.05rem;
             }
             .hero-text {
-                font-size: 0.9rem;
-            }
-            .social-links a {
-                font-size: 1.4rem;
-            }
-            .download-btn {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
             .sections {
-                padding: 2rem 1.5rem;
+                padding: 2rem 1rem;
             }
             .section {
                 padding: 1.5rem;
             }
-            .project-slideshow {
-                height: 140px;
+            .award-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Respect reduced-motion settings */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+            }
+            .news-track {
+                animation: none;
+            }
+            .news-ticker {
+                overflow-y: auto;
+            }
+            .section {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
@@ -1248,57 +1249,61 @@
 <body>
     <div class="scroll-progress"></div>
     <nav>
-        <div class="logo">Nilesh Mishra</div>
+        <a href="#bio" class="logo">Nilesh Mishra</a>
         <div class="nav-icons">
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="#bio">Bio</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
                 <a href="#publications">Publications</a>
-                <a href="#certifications">Certifications</a>
+                <a href="#certifications">Awards</a>
                 <a href="#interests">Interests</a>
             </div>
-            <button id="search-btn"><i class="fas fa-search"></i></button>
-            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
-            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
     <section class="hero" id="bio">
-        <canvas id="three-canvas"></canvas>
+        <canvas id="three-canvas" aria-hidden="true"></canvas>
         <div class="slideshow-container" id="profile-slideshow">
             <div class="slideshow-dots" id="profile-slideshow-dots"></div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Nilesh Mishra</h1>
-            <h2 class="hero-subtitle">Research Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" style="color: var(--secondary-color); text-decoration: none;">CSE @ IIT Jodhpur</a> | <span class="typed-text"></span></h2>
+            <a href="#certifications" class="fellow-badge"><i class="fas fa-award"></i> IndiaAI Fellow</a>
+            <h2 class="hero-subtitle">PhD Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" rel="noopener">CSE @ IIT Jodhpur</a> | <span class="typed-text"></span></h2>
             <p class="hero-text">
-               I am a PhD Scholar in the Department of Computer Science & Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab. My research area is 3D Vision, with a focus on satellite imagery and 3D LiDAR point cloud data for large-scale scene understanding and geospatial intelligence.
+                I am a PhD Scholar in the Department of Computer Science &amp; Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab under the supervision of Dr. Avinash Sharma, and a recipient of the IndiaAI Fellowship. My research area is 3D Vision, with a focus on satellite imagery and 3D LiDAR point cloud data for large-scale scene understanding and geospatial intelligence.
             </p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/nileshmishra610" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:nileshmishra610@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://scholar.google.com/citations?user=z-WOLhMAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://www.researchgate.net/profile/Nilesh-Mishra-10?ev=hdr_xprf" target="_blank"><i class="fab fa-researchgate"></i></a>
+                <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/nileshmishra610" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:nileshmishra610@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://scholar.google.com/citations?user=z-WOLhMAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://www.researchgate.net/profile/Nilesh-Mishra-10" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
             </div>
-            <a href="cv.pdf" download="CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
+            <a href="cv.pdf" download="Nilesh_Mishra_CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
         </div>
         <div class="hero-news" id="news">
             <h2 class="section-title">News</h2>
-            <div class="news-ticker">
-                <span class="news-scroll-icon"><i class="fas fa-chevron-up"></i></span>
-                <ul id="news-list"></ul>
+            <div class="news-ticker" id="news-ticker">
+                <ul class="news-track" id="news-list"></ul>
             </div>
         </div>
     </section>
 
-    <div class="sections">
+    <main class="sections">
         <div class="section" id="skills">
-            <h2 class="section-title">Skills & Expertise</h2>
+            <h2 class="section-title">Skills &amp; Expertise</h2>
             <div class="skills-list">
+                <div class="skill-item">
+                    <div class="skill-name">3D Vision &amp; Remote Sensing: LiDAR Point Clouds, Satellite Imagery</div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                </div>
                 <div class="skill-item">
                     <div class="skill-name">Programming: Python, C, C++, Java, SQL, HTML, CSS, JavaScript</div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
@@ -1325,28 +1330,28 @@
                     <div class="experience-details">
                         <h3>Research Fellow (Project Associate), GeoAI4Cities Lab, Data Science</h3>
                         <p>IISER Bhopal | Jan 2025 – July 2025</p>
-                        <p>Conducted research in the GeoAI4Cities Lab, Data Science department, on the project "Deep Learning Based Approach to Quantify the Emergency Vehicle Accessibility in Urban Areas Using LiDAR and Images" Utilized deep learning, computer vision, and edge AI techniques for real-time analytics, integrating LiDAR and image data to enhance urban accessibility for emergency vehicles. Contributed to Android-based solutions for real-time deployment. <a href="https://sites.google.com/iiserb.ac.in/geoai/people" target="_blank">[Lab Profile]</a></p>
+                        <p>Conducted research in the GeoAI4Cities Lab, Data Science department, on the project "Deep Learning Based Approach to Quantify the Emergency Vehicle Accessibility in Urban Areas Using LiDAR and Images". Used deep learning, computer vision and edge AI for real-time analytics, integrating LiDAR and image data to improve urban accessibility for emergency vehicles. Contributed to Android-based solutions for real-time deployment. <a href="https://sites.google.com/iiserb.ac.in/geoai/people" target="_blank" rel="noopener">[Lab Profile]</a></p>
                     </div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-details">
                         <h3>Software Developer</h3>
-                        <p>Geeks For Geeks (GFG) | Jan 2024 – March 2024</p>
-                        <p>Contributed to the development and enhancement of a compiler module used for educational purposes. Worked on debugging, optimizing code execution, and improving user interaction features in the internal coding environment.</p>
+                        <p>GeeksforGeeks (GFG) | Jan 2024 – March 2024</p>
+                        <p>Contributed to the development and enhancement of a compiler module used for educational purposes. Worked on debugging, optimizing code execution and improving user interaction features in the internal coding environment.</p>
                     </div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-details">
                         <h3>Machine Learning Intern</h3>
                         <p>Bharat Intern | Aug 2023 – Sep 2023</p>
-                        <p>Built ML models for predictive analytics using regression and classification, with data preprocessing and visualization. <a href="https://github.com/nileshmishra610" target="_blank">[GitHub]</a></p>
+                        <p>Built ML models for predictive analytics using regression and classification, with data preprocessing and visualization. <a href="https://github.com/nileshmishra610" target="_blank" rel="noopener">[GitHub]</a></p>
                     </div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-details">
-                        <h3>Freelance Project Developer & Academic Project Consultant</h3>
+                        <h3>Freelance Project Developer &amp; Academic Project Consultant</h3>
                         <p>Self-Employed | Patna, Bihar (Remote)</p>
-                        <p>Delivered multiple academic software projects for computer science students, including departments application, chat applications, library management systems, and ML-based apps like used car price prediction. Provided complete end-to-end solutions including code, documentation, and deployment support. <a href="https://github.com/nileshmishra610" target="_blank">[GitHub]</a></p>
+                        <p>Delivered academic software projects for computer science students, including department applications, chat applications, library management systems and ML-based apps such as used car price prediction. Provided end-to-end solutions including code, documentation and deployment support. <a href="https://github.com/nileshmishra610" target="_blank" rel="noopener">[GitHub]</a></p>
                     </div>
                 </div>
             </div>
@@ -1359,6 +1364,8 @@
                     <div class="education-details">
                         <h3>Doctor of Philosophy (PhD) in Computer Science and Engineering</h3>
                         <p>IIT Jodhpur, Jodhpur | July 2025 – Present</p>
+                        <p>Supervisor: Dr. Avinash Sharma | 3DVis Lab</p>
+                        <p>IndiaAI Fellow</p>
                     </div>
                 </div>
                 <div class="education-item">
@@ -1380,6 +1387,7 @@
             <h2 class="section-title">Selected Projects</h2>
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
                 <button class="filter-btn" data-filter="cv">Computer Vision</button>
                 <button class="filter-btn" data-filter="dl">Deep Learning</button>
                 <button class="filter-btn" data-filter="apps">Android Apps</button>
@@ -1388,15 +1396,23 @@
         </div>
 
         <div class="section" id="publications">
-            <h2 class="section-title">Publications & Copyrighted Works</h2>
+            <h2 class="section-title">Publications &amp; Patents</h2>
+            <div id="featured-publication"></div>
             <div id="publications-list"></div>
         </div>
 
         <div class="section" id="certifications">
-            <h2 class="section-title">Certifications & Achievements</h2>
+            <h2 class="section-title">Awards &amp; Achievements</h2>
+            <div class="certification-item award-item">
+                <div class="award-icon"><i class="fas fa-award"></i></div>
+                <div class="certification-details">
+                    <h3>IndiaAI Fellowship</h3>
+                    <p>Awarded the IndiaAI Fellowship under the IndiaAI Mission, Government of India, for PhD research in AI at IIT Jodhpur.</p>
+                </div>
+            </div>
             <div class="certification-item">
                 <div class="certification-details">
-                    <h3>GATE Qualified (Data Science & AI)</h3>
+                    <h3>GATE Qualified (Data Science &amp; AI)</h3>
                     <p>2024</p>
                 </div>
             </div>
@@ -1409,25 +1425,25 @@
             <div class="certification-item">
                 <div class="certification-details">
                     <h3>NPTEL: Data Analytics with Python (69%)</h3>
-                    <p>IIT Roorkee, Jan 2023 <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS08S6492002504200249" target="_blank">[Link]</a></p>
+                    <p>IIT Roorkee, Jan 2023 <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS08S6492002504200249" target="_blank" rel="noopener">[Link]</a></p>
                 </div>
             </div>
             <div class="certification-item">
                 <div class="certification-details">
-                    <h3>GeeksForGeeks: 485+ Problems, Rank 2</h3>
-                    <p><a href="https://www.geeksforgeeks.org/user/nileshmishra610/" target="_blank">[Link]</a></p>
+                    <h3>GeeksforGeeks: 485+ Problems, Rank 2</h3>
+                    <p><a href="https://www.geeksforgeeks.org/user/nileshmishra610/" target="_blank" rel="noopener">[Link]</a></p>
                 </div>
             </div>
             <div class="certification-item">
                 <div class="certification-details">
-                    <h3>Hackerrank: Gold Badges (C, C++, Python, Java)</h3>
-                    <p><a href="https://www.hackerrank.com/profile/nkm24snmishra" target="_blank">[Link]</a></p>
+                    <h3>HackerRank: Gold Badges (C, C++, Python, Java)</h3>
+                    <p><a href="https://www.hackerrank.com/profile/nkm24snmishra" target="_blank" rel="noopener">[Link]</a></p>
                 </div>
             </div>
             <div class="certification-item">
                 <div class="certification-details">
                     <h3>AI Primer Certification</h3>
-                    <p>Infosys <a href="https://drive.google.com/file/d/16K4vJ659k4zTxb62t_EsWpBEMHnnQZzA/view?pli=1" target="_blank">[Link]</a></p>
+                    <p>Infosys <a href="https://drive.google.com/file/d/16K4vJ659k4zTxb62t_EsWpBEMHnnQZzA/view" target="_blank" rel="noopener">[Link]</a></p>
                 </div>
             </div>
         </div>
@@ -1440,7 +1456,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-links">
@@ -1450,545 +1466,496 @@
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
             <a href="#publications">Publications</a>
-            <a href="#certifications">Certifications</a>
+            <a href="#certifications">Awards</a>
             <a href="#interests">Interests</a>
         </div>
         <div class="footer-social">
-            <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/nileshmishra610" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="mailto:nileshmishra610@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/nileshmishra610" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.researchgate.net/profile/Nilesh-Mishra-10" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+            <a href="mailto:nileshmishra610@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <p>© 2025 Nilesh Mishra. All rights reserved.</p>
+        <p>© <span id="year"></span> Nilesh Mishra. All rights reserved.</p>
     </footer>
 
-    <div class="scroll-to-top"><i class="fas fa-arrow-up"></i></div>
+    <button class="scroll-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <div class="search-modal" id="search-modal">
+    <div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-label="Search">
         <div class="search-modal-content">
-            <span class="search-modal-close">×</span>
-            <input type="text" class="search-input" id="search-input" placeholder="Search Skills, Projects, Publications, or News...">
+            <button class="modal-close" id="search-close" aria-label="Close search">×</button>
+            <input type="text" class="search-input" id="search-input" placeholder="Search skills, projects, publications or news..." autocomplete="off">
             <div class="search-results" id="search-results"></div>
         </div>
     </div>
 
-    <div class="image-modal" id="image-modal">
+    <div class="image-modal" id="image-modal" role="dialog" aria-modal="true" aria-label="Image preview">
         <div class="image-modal-content">
-            <span class="image-modal-close">×</span>
-            <img id="enlarged-image" src="" alt="Enlarged Image">
+            <button class="modal-close" id="image-close" aria-label="Close image">×</button>
+            <img id="enlarged-image" src="" alt="">
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script>
-        // Load Profile Images from Local Folder
-        const profileImageBasePath = 'images/Profile/';
-        const profileImageFilenames = [
-            'Profile1.jpg',
-            'Profile2.jpg',
-            'Profile3.jpg'
-        ];
+    (function () {
+        'use strict';
 
-        const slideshowContainer = document.getElementById('profile-slideshow');
-        const slideshowDots = document.getElementById('profile-slideshow-dots');
-        slideshowContainer.innerHTML = '';
-        slideshowDots.innerHTML = '';
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const MY_NAME = 'Nilesh Mishra';
 
-        profileImageFilenames.forEach((filename, index) => {
-            const img = document.createElement('img');
-            img.src = `${profileImageBasePath}${filename}`;
-            img.alt = `Profile Image ${index + 1}`;
-            img.classList.add('slideshow-img');
-            if (index === 0) img.classList.add('active');
-            slideshowContainer.appendChild(img);
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            slideshowDots.appendChild(dot);
-        });
-
-        // Load News from JSON
-        let newsItems = [];
-        fetch('news.json')
-            .then(response => response.json())
-            .then(data => {
-                newsItems = data;
-                const newsList = document.getElementById('news-list');
-                newsList.innerHTML = '';
-                data.forEach(item => {
-                    const li = document.createElement('li');
-                    li.classList.add('news-item');
-                    li.innerHTML = `
-                        <h3 class="news-title">${item.title}</h3>
-                        <p class="news-date">${item.date}</p>
-                        <p class="news-desc">${item.description}</p>
-                        <div class="news-details">${item.details}</div>
-                    `;
-                    newsList.appendChild(li);
-                });
-                initializeNewsTicker();
-            });
-
-        // Load Projects from JSON
-        let projects = [];
-        fetch('projects.json')
-            .then(response => response.json())
-            .then(data => {
-                projects = data;
-                loadProjects();
-            });
-
-        // Load Publications from JSON
-        let publications = [];
-        fetch('publications.json')
-            .then(response => response.json())
-            .then(data => {
-                publications = data;
-                const publicationsList = document.getElementById('publications-list');
-                publicationsList.innerHTML = '';
-                data.forEach(item => {
-                    const div = document.createElement('div');
-                    div.classList.add('publication-item');
-                    div.innerHTML = `
-                        <div class="publication-details">
-                            <h3>${item.title}</h3>
-                            <p>${item.details}${item.link ? ` <a href="${item.link}" target="_blank">[Link]</a>` : ''}</p>
-                        </div>
-                    `;
-                    publicationsList.appendChild(div);
-                });
-            });
-
-        // Skills Data
-        const skills = [
-            "Python", "C", "C++", "Java", "SQL", "HTML", "CSS", "JavaScript",
-            "TensorFlow", "Scikit-Learn", "OpenCV", "Android Studio", "Firebase",
-            "MySQL", "Git", "Pandas", "Matplotlib", "Seaborn"
-        ];
-
-        // Certifications Data
-        const certifications = [
-            "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization",
-            "SFLCDApp: Simulated Federated Learning for Crop Disease Detection Using Lightweight CNN Models on Android Devices",
-            "GATE Qualified (Data Science & AI)",
-            "UGC NET (Computer Science)",
-            "NPTEL: Data Analytics with Python",
-            "GeeksForGeeks: 485+ Problems",
-            "Hackerrank: Gold Badges (C, C++, Python, Java)",
-            "AI Primer Certification"
-        ];
-
-        // 3D Background with Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        const geometry = new THREE.SphereGeometry(0.08, 16, 16);
-        const material = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
-        const particles = [];
-
-        for (let i = 0; i < 100; i++) {
-            const particle = new THREE.Mesh(geometry, material);
-            particle.position.set(
-                (Math.random() - 0.5) * 40,
-                (Math.random() - 0.5) * 40,
-                (Math.random() - 0.5) * 40
-            );
-            scene.add(particle);
-            particles.push(particle);
+        // ---------- Helpers ----------
+        function escapeHTML(str) {
+            return String(str ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
         }
 
-        camera.position.z = 20;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particles.forEach(p => {
-                p.rotation.x += 0.005;
-                p.rotation.y += 0.005;
-                p.position.z += Math.sin(Date.now() * 0.0005 + p.position.x) * 0.01;
-                if (p.position.z > 20) p.position.z = -20;
+        function loadJSON(url) {
+            return fetch(url).then(res => {
+                if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
+                return res.json();
             });
-            renderer.render(scene, camera);
         }
-        animate();
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        // ---------- Image modal ----------
+        const imageModal = document.getElementById('image-modal');
+        const enlargedImage = document.getElementById('enlarged-image');
 
-        // Typing Effect
-        const typedText = document.querySelector('.typed-text');
-        const words = ['ML Engineer', 'CV Researcher', 'Data Scientist'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let currentWord = '';
-        let isDeleting = false;
+        function openImage(img) {
+            enlargedImage.src = img.src;
+            enlargedImage.alt = img.alt;
+            imageModal.classList.add('open');
+        }
 
-        function type() {
-            if (wordIndex >= words.length) wordIndex = 0;
-            currentWord = words[wordIndex];
+        function closeImage() {
+            imageModal.classList.remove('open');
+            enlargedImage.src = '';
+        }
 
-            if (isDeleting) {
-                typedText.textContent = currentWord.substring(0, charIndex--);
-                if (charIndex < 0) {
-                    isDeleting = false;
-                    wordIndex++;
-                    setTimeout(type, 500);
-                } else {
-                    setTimeout(type, 80);
-                }
-            } else {
-                typedText.textContent = currentWord.substring(0, charIndex++);
-                if (charIndex > currentWord.length) {
-                    isDeleting = true;
-                    setTimeout(type, 1200);
-                } else {
-                    setTimeout(type, 80);
+        document.getElementById('image-close').addEventListener('click', closeImage);
+        imageModal.addEventListener('click', e => { if (e.target === imageModal) closeImage(); });
+
+        // ---------- Slideshow (shared by profile + projects) ----------
+        // Returns a stop() function so intervals can be cleared when cards are re-rendered.
+        function createSlideshow(container, imgSelector, dotSelector) {
+            const imgs = container.querySelectorAll(imgSelector);
+            const dots = container.querySelectorAll(dotSelector);
+            let current = 0;
+            let timer = null;
+
+            function show(index) {
+                imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+                current = index;
+            }
+
+            function start() {
+                if (imgs.length > 1 && !prefersReducedMotion) {
+                    timer = setInterval(() => show((current + 1) % imgs.length), 3500);
                 }
             }
-        }
-        type();
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        if (localStorage.getItem('dark-mode') === 'true') {
-            document.body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('dark-mode', isDark);
-        });
+            function stop() {
+                clearInterval(timer);
+                timer = null;
+            }
 
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Scroll Animations
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.id === 'skills') {
-                        document.querySelectorAll('.skill-progress').forEach(bar => {
-                            bar.style.width = bar.dataset.width;
-                        });
-                    }
-                }
+            dots.forEach((dot, i) => dot.addEventListener('click', () => { stop(); show(i); start(); }));
+            imgs.forEach(img => {
+                img.addEventListener('click', () => openImage(img));
+                // Hide broken images instead of showing a broken icon
+                img.addEventListener('error', () => img.remove());
             });
-        }, { threshold: 0.2 });
 
-        sections.forEach(section => observer.observe(section));
+            start();
+            return stop;
+        }
 
-        // Scroll Progress
+        // ---------- Profile slideshow ----------
+        const profileImages = ['Profile1.jpg', 'Profile2.jpg', 'Profile3.jpg'];
+        const profileContainer = document.getElementById('profile-slideshow');
+        const profileDots = document.getElementById('profile-slideshow-dots');
+
+        profileImages.forEach((file, i) => {
+            const img = document.createElement('img');
+            img.src = `images/Profile/${file}`;
+            img.alt = `Nilesh Mishra, photo ${i + 1}`;
+            img.className = 'slideshow-img' + (i === 0 ? ' active' : '');
+            profileContainer.insertBefore(img, profileDots); // keep the dots element inside the container
+
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Show photo ${i + 1}`);
+            profileDots.appendChild(dot);
+        });
+        createSlideshow(profileContainer, '.slideshow-img', '.dot');
+
+        // ---------- News ----------
+        let newsItems = [];
+        const newsTicker = document.getElementById('news-ticker');
+        const newsList = document.getElementById('news-list');
+
+        function newsItemHTML(item, hidden) {
+            const highlight = /indiaai/i.test(item.title) ? ' highlight' : '';
+            return `
+                <li class="news-item${highlight}" tabindex="${hidden ? -1 : 0}" ${hidden ? 'aria-hidden="true"' : ''}>
+                    <h3 class="news-title">${escapeHTML(item.title)}</h3>
+                    <p class="news-date">${escapeHTML(item.date)}</p>
+                    <p class="news-desc">${escapeHTML(item.description)}</p>
+                    ${item.details ? `<div class="news-details">${item.details}</div>` : ''}
+                </li>`;
+        }
+
+        function renderNews() {
+            const html = newsItems.map(item => newsItemHTML(item, false)).join('');
+            if (prefersReducedMotion) {
+                newsList.innerHTML = html;
+            } else {
+                // Duplicate the list so the scroll loops seamlessly
+                newsList.innerHTML = html + newsItems.map(item => newsItemHTML(item, true)).join('');
+                newsList.style.setProperty('--ticker-duration', `${Math.max(newsItems.length * 5, 15)}s`);
+            }
+
+            newsList.querySelectorAll('.news-item').forEach(li => {
+                const toggle = () => {
+                    const wasOpen = li.classList.contains('open');
+                    newsList.querySelectorAll('.news-item.open').forEach(o => o.classList.remove('open'));
+                    if (!wasOpen && li.querySelector('.news-details')) li.classList.add('open');
+                    newsTicker.classList.toggle('paused', !!newsList.querySelector('.news-item.open'));
+                };
+                li.addEventListener('click', e => { if (!e.target.closest('a')) toggle(); });
+                li.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+                });
+            });
+        }
+
+        loadJSON('news.json')
+            .then(data => { newsItems = data; renderNews(); })
+            .catch(err => {
+                console.error(err);
+                newsList.innerHTML = '<li class="news-item">News could not be loaded.</li>';
+            });
+
+        // ---------- Projects ----------
+        let projects = [];
+        let projectSlideshowStops = [];
+        const projectsGrid = document.getElementById('projects-grid');
+
+        function renderProjects(filter = 'all') {
+            projectSlideshowStops.forEach(stop => stop());
+            projectSlideshowStops = [];
+
+            const list = projects.filter(p => filter === 'all' || p.category === filter);
+            if (!list.length) {
+                projectsGrid.innerHTML = '<p class="empty-state">No projects in this category yet.</p>';
+                return;
+            }
+
+            projectsGrid.innerHTML = list.map(project => {
+                const images = project.images || [];
+                const media = images.length
+                    ? images.map((src, i) => `<img src="${escapeHTML(src)}" alt="${escapeHTML(project.title)} screenshot ${i + 1}" class="project-slideshow-img${i === 0 ? ' active' : ''}" loading="lazy">`).join('') +
+                      (images.length > 1 ? `<div class="project-slideshow-dots">${images.map((_, i) => `<button class="project-dot${i === 0 ? ' active' : ''}" aria-label="Show image ${i + 1}"></button>`).join('')}</div>` : '')
+                    : '<div class="project-placeholder"><i class="fas fa-laptop-code"></i></div>';
+
+                return `
+                    <article class="project-card" data-category="${escapeHTML(project.category)}">
+                        <div class="project-slideshow">${media}</div>
+                        <div class="project-content">
+                            <h3 class="project-title">${escapeHTML(project.title)}</h3>
+                            <p class="project-desc">${escapeHTML(project.description)}${project.link ? ` <a href="${escapeHTML(project.link)}" target="_blank" rel="noopener">[GitHub]</a>` : ''}</p>
+                            <div class="project-tags">${(project.tags || []).map(t => `<span class="project-tag">${escapeHTML(t)}</span>`).join('')}</div>
+                            ${project.moreDetails ? `
+                                <button class="read-more-btn" aria-expanded="false">Read More</button>
+                                <div class="project-more-details">${project.moreDetails}</div>` : ''}
+                        </div>
+                    </article>`;
+            }).join('');
+
+            projectsGrid.querySelectorAll('.project-slideshow').forEach(container => {
+                projectSlideshowStops.push(createSlideshow(container, '.project-slideshow-img', '.project-dot'));
+            });
+
+            projectsGrid.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const details = btn.nextElementSibling;
+                    const open = details.classList.toggle('open');
+                    btn.textContent = open ? 'Read Less' : 'Read More';
+                    btn.setAttribute('aria-expanded', open);
+                });
+            });
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+                renderProjects(button.dataset.filter);
+            });
+        });
+
+        loadJSON('projects.json')
+            .then(data => { projects = data; renderProjects(); })
+            .catch(err => {
+                console.error(err);
+                projectsGrid.innerHTML = '<p class="empty-state">Projects could not be loaded.</p>';
+            });
+
+        // ---------- Publications ----------
+        let publications = [];
+
+        function authorsHTML(authors) {
+            if (!authors || !authors.length) return '';
+            return authors
+                .map(a => a === MY_NAME ? `<strong>${escapeHTML(a)}</strong>` : escapeHTML(a))
+                .join(', ');
+        }
+
+        function badgeClass(type) {
+            const t = (type || '').toLowerCase();
+            if (t.includes('preprint')) return 'pub-badge preprint';
+            if (t.includes('patent')) return 'pub-badge patent';
+            return 'pub-badge';
+        }
+
+        function publicationHTML(pub, featured) {
+            const links = Object.entries(pub.links || {})
+                .filter(([, url]) => url && url !== '#')
+                .map(([label, url]) => `<a href="${escapeHTML(url)}" target="_blank" rel="noopener">${escapeHTML(label)} <i class="fas fa-arrow-up-right-from-square"></i></a>`)
+                .join('');
+            const venue = [pub.venue, pub.status].filter(Boolean).map(escapeHTML).join(' | ');
+
+            return `
+                <div class="publication-item${featured ? ' featured' : ''}">
+                    <div class="publication-details">
+                        ${featured ? '<div class="featured-label"><i class="fas fa-star"></i> Featured research</div>' : ''}
+                        <div class="pub-meta">
+                            <span class="${badgeClass(pub.type)}">${escapeHTML(pub.type)}</span>
+                            <span class="pub-date">${escapeHTML(pub.date)}${venue ? ' | ' + venue : ''}</span>
+                        </div>
+                        <h3>${escapeHTML(pub.title)}</h3>
+                        ${pub.authors && pub.authors.length ? `<p class="pub-authors">${authorsHTML(pub.authors)}</p>` : ''}
+                        ${links ? `<div class="pub-links">${links}</div>` : ''}
+                    </div>
+                </div>`;
+        }
+
+        loadJSON('publications.json')
+            .then(data => {
+                publications = data;
+                const featured = data.filter(p => p.featured);
+                const rest = data.filter(p => !p.featured);
+                document.getElementById('featured-publication').innerHTML = featured.map(p => publicationHTML(p, true)).join('');
+                document.getElementById('publications-list').innerHTML =
+                    (featured.length ? '<h3 class="sub-title">All publications</h3>' : '') +
+                    rest.map(p => publicationHTML(p, false)).join('');
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('publications-list').innerHTML = '<p class="empty-state">Publications could not be loaded.</p>';
+            });
+
+        // ---------- 3D background ----------
+        if (window.THREE && !prefersReducedMotion) {
+            const hero = document.getElementById('bio');
+            const canvas = document.getElementById('three-canvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const geometry = new THREE.SphereGeometry(0.08, 12, 12);
+            const material = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+            const particles = [];
+            for (let i = 0; i < 100; i++) {
+                const p = new THREE.Mesh(geometry, material);
+                p.position.set((Math.random() - 0.5) * 40, (Math.random() - 0.5) * 40, (Math.random() - 0.5) * 40);
+                scene.add(p);
+                particles.push(p);
+            }
+            camera.position.z = 20;
+
+            function resize() {
+                const w = hero.clientWidth;
+                const h = hero.clientHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h, false); // false = don't override the CSS size
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            let heroVisible = true;
+            new IntersectionObserver(([entry]) => { heroVisible = entry.isIntersecting; }).observe(hero);
+
+            (function animate() {
+                requestAnimationFrame(animate);
+                if (!heroVisible || document.hidden) return; // save battery when hero is off-screen
+                const t = Date.now() * 0.0005;
+                particles.forEach(p => {
+                    p.position.z += Math.sin(t + p.position.x) * 0.01;
+                    if (p.position.z > 20) p.position.z = -20;
+                });
+                scene.rotation.y += 0.0008;
+                renderer.render(scene, camera);
+            })();
+        }
+
+        // ---------- Typing effect ----------
+        const typedText = document.querySelector('.typed-text');
+        const words = ['3D Vision Researcher', 'CV Researcher', 'ML Engineer'];
+        if (prefersReducedMotion) {
+            typedText.textContent = words[0];
+        } else {
+            let wordIndex = 0, charIndex = 0, deleting = false;
+            (function type() {
+                const word = words[wordIndex];
+                charIndex += deleting ? -1 : 1;
+                typedText.textContent = word.substring(0, charIndex);
+                let delay = deleting ? 50 : 90;
+                if (!deleting && charIndex === word.length) { deleting = true; delay = 1500; }
+                else if (deleting && charIndex === 0) { deleting = false; wordIndex = (wordIndex + 1) % words.length; delay = 400; }
+                setTimeout(type, delay);
+            })();
+        }
+
+        // ---------- Theme toggle ----------
+        const themeToggle = document.getElementById('theme-toggle');
+        function setTheme(dark) {
+            document.body.classList.toggle('dark-mode', dark);
+            themeToggle.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        let savedTheme = null;
+        try { savedTheme = localStorage.getItem('dark-mode'); } catch (e) { /* storage blocked */ }
+        setTheme(savedTheme === null ? window.matchMedia('(prefers-color-scheme: dark)').matches : savedTheme === 'true');
+        themeToggle.addEventListener('click', () => {
+            const dark = !document.body.classList.contains('dark-mode');
+            setTheme(dark);
+            try { localStorage.setItem('dark-mode', dark); } catch (e) { /* storage blocked */ }
+        });
+
+        // ---------- Mobile menu ----------
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        function setMenu(open) {
+            navLinks.classList.toggle('active', open);
+            menuToggle.setAttribute('aria-expanded', open);
+            menuToggle.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+        }
+        menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav') && navLinks.classList.contains('active')) setMenu(false);
+        });
+
+        // ---------- Section reveal + skill bars ----------
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                if (entry.target.id === 'skills') {
+                    entry.target.querySelectorAll('.skill-progress').forEach(bar => { bar.style.width = bar.dataset.width; });
+                }
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.section').forEach(s => revealObserver.observe(s));
+
+        // ---------- Active nav link ----------
+        const navAnchors = navLinks.querySelectorAll('a');
+        const navObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                navAnchors.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + entry.target.id));
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        document.querySelectorAll('#bio, .section[id]').forEach(s => navObserver.observe(s));
+
+        // ---------- Scroll progress + back to top ----------
+        const progressBar = document.querySelector('.scroll-progress');
+        const scrollTopBtn = document.querySelector('.scroll-to-top');
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+            progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+            scrollTopBtn.classList.toggle('visible', scrollTop > 300);
+        }, { passive: true });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
 
-            const scrollToTop = document.querySelector('.scroll-to-top');
-            scrollToTop.classList.toggle('visible', scrollTop > 200);
-        });
-
-        // News Ticker
-        function initializeNewsTicker() {
-            const ticker = document.querySelector('.news-ticker');
-            const items = ticker.querySelectorAll('.news-item');
-            const ul = ticker.querySelector('ul');
-            const scrollIcon = document.querySelector('.news-scroll-icon');
-
-            ul.style.animation = 'ticker-scroll 20s linear infinite';
-
-            // Pause on hover
-            ticker.addEventListener('mouseenter', () => {
-                ul.style.animationPlayState = 'paused';
-            });
-            ticker.addEventListener('mouseleave', () => {
-                if (!ticker.querySelector('.news-details[style*="display: block"]')) {
-                    ul.style.animationPlayState = 'running';
-                }
-            });
-
-            // Pause on manual scroll and reset transform when at top
-            let scrollTimeout;
-            ticker.addEventListener('scroll', () => {
-                ul.style.animationPlayState = 'paused';
-                // If scrolled to top, reset transform to ensure first item is fully visible
-                if (ticker.scrollTop === 0) {
-                    ul.style.transition = 'none';
-                    ul.style.transform = 'translateY(0)';
-                    ul.offsetHeight; // Trigger reflow
-                }
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    if (!ticker.querySelector('.news-details[style*="display: block"]')) {
-                        ul.style.animationPlayState = 'running';
-                    }
-                }, 2000);
-            });
-
-            // News item click to show details
-            items.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const details = item.querySelector('.news-details');
-                    if (details.style.display === 'block') {
-                        details.style.display = 'none';
-                        ul.style.animationPlayState = 'running';
-                    } else {
-                        items.forEach(i => i.querySelector('.news-details').style.display = 'none');
-                        details.style.display = 'block';
-                        ul.style.animationPlayState = 'paused';
-                    }
-                });
-            });
-
-            // Scroll icon click to move up one item
-            scrollIcon.addEventListener('click', () => {
-                const tickerHeight = ticker.offsetHeight;
-                const ulHeight = ul.offsetHeight;
-                let currentTransform = getComputedStyle(ul).transform;
-                let currentY = currentTransform === 'none' ? 0 : parseFloat(currentTransform.split(',')[5]) || 0;
-
-                const itemHeight = ulHeight / items.length;
-                let newY = currentY + itemHeight;
-
-                if (newY >= 0) {
-                    newY = -(ulHeight - tickerHeight);
-                    ul.style.transition = 'none';
-                    ul.style.transform = `translateY(${newY}px)`;
-                    ul.offsetHeight; // Trigger reflow
-                    ul.style.transition = 'transform 0.5s ease';
-                } else {
-                    ul.style.transition = 'transform 0.5s ease';
-                    ul.style.transform = `translateY(${newY}px)`;
-                }
-
-                ul.style.animationPlayState = 'paused';
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    if (!ticker.querySelector('.news-details[style*="display: block"]')) {
-                        ul.style.animationPlayState = 'running';
-                    }
-                }, 1000);
-            });
-        }
-
-        // Dynamic Projects Loading
-        const projectsGrid = document.getElementById('projects-grid');
-        function loadProjects(filter = 'all') {
-            projectsGrid.innerHTML = '';
-            projects.forEach(project => {
-                if (filter === 'all' || project.category === filter) {
-                    const card = document.createElement('div');
-                    card.classList.add('project-card');
-                    card.dataset.category = project.category;
-                    card.innerHTML = `
-                        <div class="project-slideshow">
-                            ${project.images.map((img, idx) => `<img src="${img}" alt="${project.title} image ${idx+1}" class="project-slideshow-img ${idx === 0 ? 'active' : ''}">`).join('')}
-                            <div class="project-slideshow-dots">
-                                ${project.images.map((_, idx) => `<span class="project-dot ${idx === 0 ? 'active' : ''}"></span>`).join('')}
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">${project.title}</h3>
-                            <p class="project-desc">${project.description}${project.link ? ` <a href="${project.link}" target="_blank">[GitHub]</a>` : ''}</p>
-                            <div class="project-tags">
-                                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                            </div>
-                            <button class="read-more-btn">Read More</button>
-                            <div class="project-more-details">${project.moreDetails}</div>
-                        </div>
-                    `;
-                    projectsGrid.appendChild(card);
-                }
-            });
-            initializeSlideshows();
-            initializeReadMore();
-        }
-
-        // Initialize Slideshows
-        function initializeSlideshows() {
-            const slideshowContainers = document.querySelectorAll('.slideshow-container, .project-slideshow');
-            slideshowContainers.forEach(container => {
-                const imgs = container.querySelectorAll('img');
-                const dots = container.querySelectorAll('.dot, .project-dot');
-                let current = 0;
-
-                function show(index) {
-                    imgs.forEach((img, i) => {
-                        img.classList.toggle('active', i === index);
-                        img.style.opacity = i === index ? '1' : '0';
-                    });
-                    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-                    current = index;
-                }
-
-                dots.forEach((dot, i) => {
-                    dot.addEventListener('click', () => show(i));
-                });
-
-                if (imgs.length > 1) {
-                    setInterval(() => show((current + 1) % imgs.length), 3000);
-                }
-
-                imgs.forEach(img => {
-                    img.addEventListener('click', () => {
-                        document.getElementById('enlarged-image').src = img.src; // Set the clicked image's src
-                        document.getElementById('image-modal').style.display = 'flex';
-                    });
-                });
-            });
-        }
-
-        // Initialize Read More
-        function initializeReadMore() {
-            const readMoreBtns = document.querySelectorAll('.read-more-btn');
-            readMoreBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const moreDetails = btn.nextElementSibling;
-                    if (moreDetails.style.display === 'block') {
-                        moreDetails.style.display = 'none';
-                        btn.textContent = 'Read More';
-                    } else {
-                        moreDetails.style.display = 'block';
-                        btn.textContent = 'Read Less';
-                    }
-                });
-            });
-        }
-
-        // Initialize projects and slideshows after JSON is loaded
-        loadProjects();
-        initializeSlideshows();
-        initializeNewsTicker();
-
-        // Project Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const filter = button.dataset.filter;
-                loadProjects(filter);
-            });
-        });
-
-        // Image Modal
-        const imageModal = document.getElementById('image-modal');
-        const enlargedImage = document.getElementById('enlarged-image');
-        const imageClose = document.querySelector('.image-modal-close');
-
-        imageClose.addEventListener('click', () => {
-            imageModal.style.display = 'none';
-        });
-
-        imageModal.addEventListener('click', (e) => {
-            if (e.target === imageModal) {
-                imageModal.style.display = 'none';
-            }
-        });
-
-        // Search Functionality
-        const searchBtn = document.getElementById('search-btn');
+        // ---------- Search ----------
         const searchModal = document.getElementById('search-modal');
-        const searchClose = document.querySelector('.search-modal-close');
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');
+        const skills = [
+            'Python', 'C', 'C++', 'Java', 'SQL', 'HTML', 'CSS', 'JavaScript',
+            'TensorFlow', 'Scikit-Learn', 'OpenCV', 'Android Studio', 'Firebase',
+            'MySQL', 'Git', 'Pandas', 'Matplotlib', 'Seaborn', 'LiDAR', 'Point Clouds', 'Satellite Imagery', '3D Vision'
+        ];
+        const achievements = [
+            'IndiaAI Fellowship', 'GATE Qualified (Data Science & AI)', 'UGC NET (Computer Science)',
+            'NPTEL: Data Analytics with Python', 'GeeksforGeeks: 485+ Problems', 'HackerRank: Gold Badges', 'AI Primer Certification'
+        ];
 
-        searchBtn.addEventListener('click', () => {
-            searchModal.style.display = 'flex';
+        function openSearch() {
+            searchModal.classList.add('open');
             searchInput.focus();
-        });
+        }
 
-        searchClose.addEventListener('click', () => {
-            searchModal.style.display = 'none';
+        function closeSearch() {
+            searchModal.classList.remove('open');
             searchInput.value = '';
             searchResults.innerHTML = '';
-        });
+        }
 
-        searchModal.addEventListener('click', (e) => {
-            if (e.target === searchModal) {
-                searchModal.style.display = 'none';
-                searchInput.value = '';
-                searchResults.innerHTML = '';
-            }
-        });
+        document.getElementById('search-btn').addEventListener('click', openSearch);
+        document.getElementById('search-close').addEventListener('click', closeSearch);
+        searchModal.addEventListener('click', e => { if (e.target === searchModal) closeSearch(); });
 
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
             searchResults.innerHTML = '';
+            if (!q) return;
+
             const results = [];
+            const has = s => (s || '').toLowerCase().includes(q);
+            skills.forEach(s => has(s) && results.push({ type: 'Skill', value: s, section: 'skills' }));
+            projects.forEach(p => (has(p.title) || has(p.description) || (p.tags || []).some(has)) && results.push({ type: 'Project', value: p.title, section: 'projects' }));
+            publications.forEach(p => (has(p.title) || has(p.venue) || (p.authors || []).some(has)) && results.push({ type: 'Publication', value: p.title, section: 'publications' }));
+            achievements.forEach(a => has(a) && results.push({ type: 'Award', value: a, section: 'certifications' }));
+            newsItems.forEach(n => (has(n.title) || has(n.description)) && results.push({ type: 'News', value: n.title, section: 'news' }));
 
-            skills.forEach(skill => {
-                if (skill.toLowerCase().includes(query)) {
-                    results.push({ type: 'skill', value: skill });
-                }
-            });
+            if (!results.length) {
+                searchResults.innerHTML = '<div class="search-result-item empty">No results found</div>';
+                return;
+            }
 
-            projects.forEach(project => {
-                if (project.title.toLowerCase().includes(query) || project.description.toLowerCase().includes(query)) {
-                    results.push({ type: 'project', value: project.title });
-                }
-            });
-
-            publications.forEach(pub => {
-                if (pub.title.toLowerCase().includes(query) || pub.details.toLowerCase().includes(query)) {
-                    results.push({ type: 'publication', value: pub.title, section: 'publications' });
-                }
-            });
-
-            certifications.forEach(cert => {
-                if (cert.toLowerCase().includes(query)) {
-                    results.push({ type: 'certification', value: cert, section: cert.includes("Efficient Face Recognition") || cert.includes("SFLCDApp") ? 'publications' : 'certifications' });
-                }
-            });
-
-            newsItems.forEach(news => {
-                if (news.title.toLowerCase().includes(query) || news.description.toLowerCase().includes(query)) {
-                    results.push({ type: 'news', value: news.title });
-                }
-            });
-
-            results.forEach(result => {
-                const item = document.createElement('div');
-                item.classList.add('search-result-item');
-                item.textContent = `${result.type.charAt(0).toUpperCase() + result.type.slice(1)}: ${result.value}`;
-                item.addEventListener('click', () => {
-                    const sectionId = result.type === 'skill' ? 'skills' : result.type === 'project' ? 'projects' : result.type === 'news' ? 'news' : result.section || 'certifications';
-                    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-                    searchModal.style.display = 'none';
-                    searchInput.value = '';
-                    searchResults.innerHTML = '';
+            results.slice(0, 20).forEach(r => {
+                const btn = document.createElement('button');
+                btn.className = 'search-result-item';
+                btn.innerHTML = `<small>${r.type}</small>${escapeHTML(r.value)}`;
+                btn.addEventListener('click', () => {
+                    closeSearch();
+                    document.getElementById(r.section).scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                 });
-                searchResults.appendChild(item);
+                searchResults.appendChild(btn);
             });
+        });
 
-            if (results.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+        // ---------- Keyboard shortcuts ----------
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeSearch();
+                closeImage();
+                setMenu(false);
+            } else if (e.key === '/' && !searchModal.classList.contains('open') && !/input|textarea/i.test(document.activeElement.tagName)) {
+                e.preventDefault();
+                openSearch();
             }
         });
-
-        // Scroll to Top
-        const scrollToTop = document.querySelector('.scroll-to-top');
-        scrollToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    })();
     </script>
 </body>
 </html>
-
-
-
-
-
