@@ -1,26 +1,38 @@
-[ 
+[
     {
-        "title": "Paper Accepted at CML-2026 Conference",
+        "title": "Awarded the IndiaAI Fellowship",
+        "date": "2026",
+        "description": "Selected as an IndiaAI Fellow under the IndiaAI Mission, Government of India.",
+        "details": "Fellowship under the IndiaAI Mission, Government of India, supporting my PhD research in 3D vision at IIT Jodhpur."
+    },
+    {
+        "title": "Paper Accepted at CML-2026",
         "date": "March 2026",
-        "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
-        "details": "Detailed description of the paper, its significance, and the conference details."
+        "description": "SFLCDApp: simulated federated learning for crop disease detection with lightweight CNNs on Android.",
+        "details": "With Manish Kumar and Aman Raj. <a href=\"https://www.researchgate.net/publication/415032990_SFLCDApp_Simulated_Federated_Learning_for_Crop_Disease_Detection_Using_Lightweight_CNN_Models_on_Android_Devices\" target=\"_blank\" rel=\"noopener\">Read on ResearchGate</a>"
     },
     {
-        "title": "Paper Submitted to ICICV-2026",
+        "title": "Paper Published with Springer",
+        "date": "January 2026",
+        "description": "Efficient Face Recognition-Based Attendance System with Adaptive Lighting and Pose Normalization.",
+        "details": "<a href=\"https://doi.org/10.1007/978-3-032-10670-4_11\" target=\"_blank\" rel=\"noopener\">DOI: 10.1007/978-3-032-10670-4_11</a>"
+    },
+    {
+        "title": "Preprint: Accuracy Is Not the Bottleneck",
         "date": "December 2025",
-        "description": "Research paper on Network Anomaly Detection submitted for peer review.",
-        "details": "Our paper titled 'Anomaly Detection in Network Traffic Using Clustering Techniques' is currently under review at the International Conference on Intelligent Computing and System Control (ICICV-2026)."
+        "description": "New preprint on deploying clustering-based intrusion detection on mobile devices.",
+        "details": "With Juhi Chaudhary and Shasank Dixit. <a href=\"https://www.researchgate.net/publication/415247367_Accuracy_Is_Not_the_Bottleneck_Deploying_Clustering-Based_Intrusion_Detection_on_Mobile_Devices\" target=\"_blank\" rel=\"noopener\">Read on ResearchGate</a>"
     },
     {
-        "title": "Paper Accepted at ICIVC-2025 Conference",
-        "date": "June 2025",
-        "description": "Research paper on advanced computer vision techniques accepted at a prestigious AI conference.",
-        "details": "Detailed description of the paper, its significance, and the conference details."
+        "title": "Joined IIT Jodhpur as a PhD Scholar",
+        "date": "July 2025",
+        "description": "Started my PhD in CSE at IIT Jodhpur, working in the 3DVis Lab.",
+        "details": ""
     },
     {
-        "title": "New Project Launch",
+        "title": "Paper Accepted at ICIVC-2025",
         "date": "June 2025",
-        "description": "Launched a new Android app for real-time crop disease detection.",
-        "details": "Information about the project, its impact, and deployment details."
+        "description": "Research paper on computer vision accepted at ICIVC-2025.",
+        "details": ""
     }
 ]
