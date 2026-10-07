@@ -888,6 +888,25 @@
             margin-bottom: 0.8rem;
         }
 
+        .research-label {
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+
+        .research-areas {
+            gap: 0.6rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .research-areas .keyword {
+            font-size: 0.9rem;
+            padding: 0.4rem 0.9rem;
+        }
+
+        .research-intro:last-child {
+            margin-bottom: 0;
+        }
+
         .keyword-list {
             display: flex;
             flex-wrap: wrap;
@@ -913,6 +932,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
             gap: 0 1.2rem;
+        }
+
+        .awards-grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
         }
 
         .certification-details h3 i {
@@ -1442,7 +1465,7 @@
             <h2 class="hero-subtitle">PhD Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" rel="noopener">CSE @ IIT Jodhpur</a></h2>
             <p class="typed-line"><span class="typed-text"></span></p>
             <p class="hero-text">
-                I am a PhD Scholar in the Department of Computer Science &amp; Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab under the supervision of Dr. Avinash Sharma, and a recipient of the IndiaAI Fellowship. My research is in 3D vision and multimodal geospatial AI: fusing satellite imagery with UAV LiDAR point clouds to reconstruct large-scale 3D terrain and build digital twins for geospatial intelligence and disaster resilience.
+                I am a PhD Scholar in the Department of Computer Science &amp; Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab under the supervision of Dr. Avinash Sharma, and a recipient of the IndiaAI Fellowship. My research area is 3D Vision, with a focus on large-scale scene understanding and geospatial intelligence.
             </p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -1472,52 +1495,17 @@
     <main class="sections">
         <div class="section" id="research">
             <h2 class="section-title">PhD Research</h2>
-            <p class="research-intro">My PhD at IIT Jodhpur, supported by the IndiaAI Fellowship, is about teaching machines to understand the Earth in 3D. I combine what satellites see over wide areas with the fine geometry captured by drones and LiDAR, so that large terrains can be reconstructed as digital twins, monitored over time and analysed at scale. These are the directions the work spans:</p>
-            <div class="research-grid">
-                <div class="research-card">
-                    <i class="fas fa-layer-group"></i>
-                    <h3>Multimodal Geospatial Fusion</h3>
-                    <p>Cross-modal deep learning that combines multispectral satellite imagery with high-density UAV LiDAR and photogrammetry.</p>
-                    <div class="keyword-list"><span class="keyword">Cross-modal attention</span><span class="keyword">Satellite + LiDAR</span><span class="keyword">Multi-scale analysis</span></div>
-                </div>
-                <div class="research-card">
-                    <i class="fas fa-mountain"></i>
-                    <h3>3D Terrain Reconstruction &amp; Digital Twins</h3>
-                    <p>High-fidelity, large-scale 3D terrain models and digital twins that hold up under clouds, dense vegetation and complex urban scenes.</p>
-                    <div class="keyword-list"><span class="keyword">Neural radiance fields</span><span class="keyword">Diffusion 3D priors</span><span class="keyword">Digital twins</span></div>
-                </div>
-                <div class="research-card">
-                    <i class="fas fa-cubes"></i>
-                    <h3>Point Cloud Understanding</h3>
-                    <p>Filtering and semantic segmentation of 3D point clouds to separate terrain, vegetation, buildings and water.</p>
-                    <div class="keyword-list"><span class="keyword">Point transformers</span><span class="keyword">Graph neural networks</span><span class="keyword">Semantic segmentation</span></div>
-                </div>
-                <div class="research-card">
-                    <i class="fas fa-clock-rotate-left"></i>
-                    <h3>Spatio-Temporal Change Modelling</h3>
-                    <p>Capturing how terrain evolves across seasons and years, from land-cover change to erosion and landslide risk.</p>
-                    <div class="keyword-list"><span class="keyword">Change detection</span><span class="keyword">Landslide susceptibility</span><span class="keyword">Disaster resilience</span></div>
-                </div>
-                <div class="research-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Label-Efficient Learning</h3>
-                    <p>Self-supervised and weakly-supervised methods that learn from large unlabelled geospatial archives with minimal annotation.</p>
-                    <div class="keyword-list"><span class="keyword">Self-supervised learning</span><span class="keyword">Weak supervision</span><span class="keyword">Generalisation</span></div>
-                </div>
-                <div class="research-card">
-                    <i class="fas fa-satellite"></i>
-                    <h3>Geospatial Intelligence</h3>
-                    <p>Turning 3D reconstructions into usable insight through interactive multi-scale visualisation and analysis tools.</p>
-                    <div class="keyword-list"><span class="keyword">Remote sensing</span><span class="keyword">3D visualisation</span><span class="keyword">Decision support</span></div>
-                </div>
-            </div>
+            <p class="research-intro">My PhD at IIT Jodhpur, supported by the IndiaAI Fellowship, focuses on developing AI-driven methods for understanding, reconstructing, and modelling large-scale real-world environments in 3D.</p>
+            <p class="research-label">My research broadly spans:</p>
+            <div class="keyword-list research-areas"><span class="keyword">3D Terrain Reconstruction</span><span class="keyword">Digital Twins</span><span class="keyword">Point Cloud Understanding</span><span class="keyword">Multimodal Geospatial AI</span><span class="keyword">Landscape Prediction and Simulation</span><span class="keyword">Spatio-Temporal Change Analysis</span><span class="keyword">Geospatial Intelligence</span></div>
+            <p class="research-intro">The broader goal is to develop scalable and generalizable AI systems for analysing complex environments and supporting applications in environmental monitoring, disaster resilience, and strategic geospatial analysis.</p>
         </div>
 
         <div class="section" id="skills">
             <h2 class="section-title">Skills &amp; Expertise</h2>
             <div class="skills-list">
                 <div class="skill-item">
-                    <div class="skill-name">3D Vision &amp; Remote Sensing: LiDAR Point Clouds, Satellite Imagery, Multimodal Fusion</div>
+                    <div class="skill-name">3D Vision &amp; Remote Sensing: LiDAR Point Clouds, Satellite Imagery</div>
                     <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
                 </div>
                 <div class="skill-item">
@@ -1581,7 +1569,7 @@
                         <h3>Doctor of Philosophy (PhD) in Computer Science and Engineering</h3>
                         <p>IIT Jodhpur, Jodhpur | July 2025 – Present</p>
                         <p>Supervisor: Dr. Avinash Sharma | 3DVis Lab</p>
-                        <p>Research: multimodal fusion of satellite imagery and UAV LiDAR for large-scale 3D terrain reconstruction and digital twins</p>
+                        <p>Research area: 3D vision and geospatial AI</p>
                         <p>IndiaAI Fellow</p>
                     </div>
                 </div>
@@ -1624,22 +1612,28 @@
                 <div class="award-icon"><i class="fas fa-award"></i></div>
                 <div class="certification-details">
                     <h3>IndiaAI Fellowship</h3>
-                    <p>Awarded the IndiaAI Fellowship under the IndiaAI Mission, Government of India, for my PhD research on multimodal 3D geospatial AI at IIT Jodhpur. <a href="#research">[Research]</a></p>
+                    <p>Awarded the IndiaAI Fellowship under the IndiaAI Mission, Government of India, for my PhD research at IIT Jodhpur. <a href="#research">[Research]</a></p>
                 </div>
             </div>
 
             <h3 class="sub-title">Achievements</h3>
-            <div class="awards-grid">
+            <div class="awards-grid awards-grid-3">
                 <div class="certification-item">
                     <div class="certification-details">
                         <h3><i class="fas fa-pen-nib"></i>Slogan Writing Award</h3>
-                        <p>Awarded by the District Magistrate, Class 10</p>
+                        <p>Awarded by the District Magistrate</p>
                     </div>
                 </div>
                 <div class="certification-item">
                     <div class="certification-details">
-                        <h3><i class="fas fa-microphone"></i>Speech Competition Winner (twice)</h3>
-                        <p>First place in Class 7 and Class 8</p>
+                        <h3><i class="fas fa-microphone"></i>Speech Competition</h3>
+                        <p>Winner, two times</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-lightbulb"></i>Quiz Competition</h3>
+                        <p>Winner, two times</p>
                     </div>
                 </div>
             </div>
@@ -2207,14 +2201,9 @@
         const achievements = [
             'IndiaAI Fellowship', 'GATE Qualified (Data Science & AI)', 'UGC NET (Computer Science)',
             'NPTEL: Data Analytics with Python', 'GeeksforGeeks: Institute Rank 1', 'HackerRank: Gold Badges', 'AI Primer Certification',
-            'Slogan Writing Award (District Magistrate)', 'Speech Competition Winner'
+            'Slogan Writing Award (District Magistrate)', 'Speech Competition Winner', 'Quiz Competition Winner'
         ];
-        const researchTopics = [
-            'Multimodal Geospatial Fusion', 'Satellite Imagery', 'UAV LiDAR', 'Point Clouds', '3D Terrain Reconstruction',
-            'Digital Twins', 'Neural Radiance Fields (NeRF)', 'Point Transformers', 'Graph Neural Networks',
-            'Diffusion Models', 'Semantic Segmentation', 'Change Detection', 'Landslide Susceptibility',
-            'Self-Supervised Learning', 'Remote Sensing', '3D Vision'
-        ];
+        const researchTopics = ["3D Terrain Reconstruction", "Digital Twins", "Point Cloud Understanding", "Multimodal Geospatial AI", "Landscape Prediction and Simulation", "Spatio-Temporal Change Analysis", "Geospatial Intelligence", "3D Vision"];
 
         function openSearch() {
             searchModal.classList.add('open');
