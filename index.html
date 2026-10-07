@@ -280,8 +280,27 @@
             background: linear-gradient(135deg, #e5e7eb, var(--bg-color));
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                linear-gradient(rgba(30, 58, 138, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 58, 138, 0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+        }
+
         .dark-mode .hero {
             background: linear-gradient(135deg, #374151, #111827);
+        }
+
+        .dark-mode .hero::after {
+            background-image:
+                linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
         }
 
         #three-canvas {
@@ -302,7 +321,7 @@
             overflow: hidden;
             position: relative;
             flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 6px var(--secondary-color), 0 16px 40px rgba(0, 0, 0, 0.18);
             background: radial-gradient(circle, rgba(245, 158, 11, 0.2), transparent);
         }
 
@@ -319,6 +338,12 @@
 
         .slideshow-img.active {
             opacity: 1;
+        }
+
+        /* Hidden slides stay stacked on top; let clicks pass through to the visible one */
+        .slideshow-img:not(.active),
+        .project-slideshow-img:not(.active) {
+            pointer-events: none;
         }
 
         .slideshow-container:hover .slideshow-img.active {
@@ -405,6 +430,12 @@
 
         .hero-subtitle a {
             text-decoration: none;
+        }
+
+        .typed-line {
+            min-height: 2rem;
+            font-size: 1.25rem;
+            margin: -0.6rem 0 1rem;
         }
 
         .typed-text {
@@ -519,18 +550,73 @@
 
         .news-track {
             list-style: none;
-            animation: ticker-scroll var(--ticker-duration, 30s) linear infinite;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .news-ticker:hover .news-track,
-        .news-ticker:focus-within .news-track,
-        .news-ticker.paused .news-track {
-            animation-play-state: paused;
+        .news-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes ticker-scroll {
-            from { transform: translateY(0); }
-            to { transform: translateY(-50%); }
+        .news-header .section-title {
+            margin-bottom: 0;
+        }
+
+        .news-controls {
+            display: flex;
+            gap: 0.35rem;
+        }
+
+        .news-controls button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(107, 114, 128, 0.4);
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .news-controls button:hover {
+            border-color: var(--secondary-color);
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .news-controls button:disabled {
+            opacity: 0.35;
+            cursor: default;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border-color: rgba(107, 114, 128, 0.4);
+        }
+
+        .news-progress {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 0.8rem;
+        }
+
+        .news-progress span {
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(107, 114, 128, 0.4);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .news-progress span.active {
+            width: 18px;
+            background: var(--secondary-color);
         }
 
         .news-item {
@@ -752,6 +838,88 @@
 
         .dark-mode .education-item::before, .dark-mode .experience-item::before {
             background: var(--secondary-color);
+        }
+
+        /* Research interests */
+        .research-intro {
+            max-width: 75ch;
+            color: var(--muted-color);
+            margin-bottom: 1.8rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .research-card {
+            padding: 1.3rem;
+            border-radius: 10px;
+            background: var(--item-bg);
+            border-top: 3px solid var(--primary-color);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .dark-mode .research-card {
+            border-top-color: var(--secondary-color);
+        }
+
+        .research-card:hover {
+            background: var(--item-bg-hover);
+            transform: translateY(-3px);
+        }
+
+        .research-card i {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.6rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .research-card p {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .keyword {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(30, 58, 138, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dark-mode .keyword {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--secondary-color);
+        }
+
+        /* Awards grid */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+            gap: 0 1.2rem;
+        }
+
+        .certification-details h3 i {
+            color: var(--secondary-color);
+            margin-right: 0.4rem;
+            width: 1.1em;
+            text-align: center;
         }
 
         /* Award highlight (IndiaAI Fellowship) */
@@ -983,17 +1151,17 @@
         }
 
         .project-tag {
-            background: var(--primary-color);
-            color: #ffffff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background: rgba(30, 58, 138, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
             font-weight: 500;
         }
 
         .dark-mode .project-tag {
-            background: var(--secondary-color);
-            color: var(--primary-color);
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--secondary-color);
         }
 
         .read-more-btn {
@@ -1003,7 +1171,8 @@
             cursor: pointer;
             font-family: inherit;
             font-weight: 600;
-            margin-top: 0.8rem;
+            margin-top: auto;
+            padding-top: 0.9rem;
             align-self: flex-start;
         }
 
@@ -1233,12 +1402,6 @@
             *, *::before, *::after {
                 transition-duration: 0.01ms !important;
             }
-            .news-track {
-                animation: none;
-            }
-            .news-ticker {
-                overflow-y: auto;
-            }
             .section {
                 opacity: 1;
                 transform: none;
@@ -1253,6 +1416,7 @@
         <div class="nav-icons">
             <div class="nav-links" id="nav-links">
                 <a href="#bio">Bio</a>
+                <a href="#research">PhD Research</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
@@ -1275,9 +1439,10 @@
         <div class="hero-content">
             <h1 class="hero-title">Nilesh Mishra</h1>
             <a href="#certifications" class="fellow-badge"><i class="fas fa-award"></i> IndiaAI Fellow</a>
-            <h2 class="hero-subtitle">PhD Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" rel="noopener">CSE @ IIT Jodhpur</a> | <span class="typed-text"></span></h2>
+            <h2 class="hero-subtitle">PhD Scholar in <a href="https://cse.iitj.ac.in/" target="_blank" rel="noopener">CSE @ IIT Jodhpur</a></h2>
+            <p class="typed-line"><span class="typed-text"></span></p>
             <p class="hero-text">
-                I am a PhD Scholar in the Department of Computer Science &amp; Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab under the supervision of Dr. Avinash Sharma, and a recipient of the IndiaAI Fellowship. My research area is 3D Vision, with a focus on satellite imagery and 3D LiDAR point cloud data for large-scale scene understanding and geospatial intelligence.
+                I am a PhD Scholar in the Department of Computer Science &amp; Engineering (CSE) at IIT Jodhpur, working in the 3DVis Lab under the supervision of Dr. Avinash Sharma, and a recipient of the IndiaAI Fellowship. My research is in 3D vision and multimodal geospatial AI: fusing satellite imagery with UAV LiDAR point clouds to reconstruct large-scale 3D terrain and build digital twins for geospatial intelligence and disaster resilience.
             </p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/nilesh-mishra-6277361aa/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -1289,19 +1454,70 @@
             <a href="cv.pdf" download="Nilesh_Mishra_CV.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV</a>
         </div>
         <div class="hero-news" id="news">
-            <h2 class="section-title">News</h2>
-            <div class="news-ticker" id="news-ticker">
-                <ul class="news-track" id="news-list"></ul>
+            <div class="news-header">
+                <h2 class="section-title">News</h2>
+                <div class="news-controls">
+                    <button id="news-prev" aria-label="Previous news"><i class="fas fa-chevron-up"></i></button>
+                    <button id="news-pause" aria-label="Pause news"><i class="fas fa-pause"></i></button>
+                    <button id="news-next" aria-label="Next news"><i class="fas fa-chevron-down"></i></button>
+                </div>
             </div>
+            <div class="news-ticker" id="news-ticker">
+                <ul class="news-track" id="news-list" aria-live="polite"></ul>
+            </div>
+            <div class="news-progress" id="news-progress" aria-hidden="true"></div>
         </div>
     </section>
 
     <main class="sections">
+        <div class="section" id="research">
+            <h2 class="section-title">PhD Research</h2>
+            <p class="research-intro">My PhD at IIT Jodhpur, supported by the IndiaAI Fellowship, is about teaching machines to understand the Earth in 3D. I combine what satellites see over wide areas with the fine geometry captured by drones and LiDAR, so that large terrains can be reconstructed as digital twins, monitored over time and analysed at scale. These are the directions the work spans:</p>
+            <div class="research-grid">
+                <div class="research-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Multimodal Geospatial Fusion</h3>
+                    <p>Cross-modal deep learning that combines multispectral satellite imagery with high-density UAV LiDAR and photogrammetry.</p>
+                    <div class="keyword-list"><span class="keyword">Cross-modal attention</span><span class="keyword">Satellite + LiDAR</span><span class="keyword">Multi-scale analysis</span></div>
+                </div>
+                <div class="research-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3>3D Terrain Reconstruction &amp; Digital Twins</h3>
+                    <p>High-fidelity, large-scale 3D terrain models and digital twins that hold up under clouds, dense vegetation and complex urban scenes.</p>
+                    <div class="keyword-list"><span class="keyword">Neural radiance fields</span><span class="keyword">Diffusion 3D priors</span><span class="keyword">Digital twins</span></div>
+                </div>
+                <div class="research-card">
+                    <i class="fas fa-cubes"></i>
+                    <h3>Point Cloud Understanding</h3>
+                    <p>Filtering and semantic segmentation of 3D point clouds to separate terrain, vegetation, buildings and water.</p>
+                    <div class="keyword-list"><span class="keyword">Point transformers</span><span class="keyword">Graph neural networks</span><span class="keyword">Semantic segmentation</span></div>
+                </div>
+                <div class="research-card">
+                    <i class="fas fa-clock-rotate-left"></i>
+                    <h3>Spatio-Temporal Change Modelling</h3>
+                    <p>Capturing how terrain evolves across seasons and years, from land-cover change to erosion and landslide risk.</p>
+                    <div class="keyword-list"><span class="keyword">Change detection</span><span class="keyword">Landslide susceptibility</span><span class="keyword">Disaster resilience</span></div>
+                </div>
+                <div class="research-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Label-Efficient Learning</h3>
+                    <p>Self-supervised and weakly-supervised methods that learn from large unlabelled geospatial archives with minimal annotation.</p>
+                    <div class="keyword-list"><span class="keyword">Self-supervised learning</span><span class="keyword">Weak supervision</span><span class="keyword">Generalisation</span></div>
+                </div>
+                <div class="research-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>Geospatial Intelligence</h3>
+                    <p>Turning 3D reconstructions into usable insight through interactive multi-scale visualisation and analysis tools.</p>
+                    <div class="keyword-list"><span class="keyword">Remote sensing</span><span class="keyword">3D visualisation</span><span class="keyword">Decision support</span></div>
+                </div>
+            </div>
+        </div>
+
         <div class="section" id="skills">
             <h2 class="section-title">Skills &amp; Expertise</h2>
             <div class="skills-list">
                 <div class="skill-item">
-                    <div class="skill-name">3D Vision &amp; Remote Sensing: LiDAR Point Clouds, Satellite Imagery</div>
+                    <div class="skill-name">3D Vision &amp; Remote Sensing: LiDAR Point Clouds, Satellite Imagery, Multimodal Fusion</div>
                     <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
                 </div>
                 <div class="skill-item">
@@ -1309,7 +1525,7 @@
                     <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">Machine Learning: TensorFlow, Scikit-Learn, OpenCV</div>
+                    <div class="skill-name">Machine Learning: PyTorch, TensorFlow, Scikit-Learn, OpenCV, Explainable AI</div>
                     <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
                 </div>
                 <div class="skill-item">
@@ -1365,6 +1581,7 @@
                         <h3>Doctor of Philosophy (PhD) in Computer Science and Engineering</h3>
                         <p>IIT Jodhpur, Jodhpur | July 2025 – Present</p>
                         <p>Supervisor: Dr. Avinash Sharma | 3DVis Lab</p>
+                        <p>Research: multimodal fusion of satellite imagery and UAV LiDAR for large-scale 3D terrain reconstruction and digital twins</p>
                         <p>IndiaAI Fellow</p>
                     </div>
                 </div>
@@ -1407,45 +1624,70 @@
                 <div class="award-icon"><i class="fas fa-award"></i></div>
                 <div class="certification-details">
                     <h3>IndiaAI Fellowship</h3>
-                    <p>Awarded the IndiaAI Fellowship under the IndiaAI Mission, Government of India, for PhD research in AI at IIT Jodhpur.</p>
+                    <p>Awarded the IndiaAI Fellowship under the IndiaAI Mission, Government of India, for my PhD research on multimodal 3D geospatial AI at IIT Jodhpur. <a href="#research">[Research]</a></p>
                 </div>
             </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>GATE Qualified (Data Science &amp; AI)</h3>
-                    <p>2024</p>
+
+            <h3 class="sub-title">Achievements</h3>
+            <div class="awards-grid">
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-pen-nib"></i>Slogan Writing Award</h3>
+                        <p>Awarded by the District Magistrate, Class 10</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-microphone"></i>Speech Competition Winner (twice)</h3>
+                        <p>First place in Class 7 and Class 8</p>
+                    </div>
                 </div>
             </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>UGC NET (Computer Science)</h3>
-                    <p>2024</p>
+
+            <h3 class="sub-title">Exams &amp; certifications</h3>
+            <div class="awards-grid">
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-medal"></i>GATE Qualified (Data Science &amp; AI)</h3>
+                        <p>2024</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-medal"></i>UGC NET (Computer Science)</h3>
+                        <p>2024</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-certificate"></i>NPTEL: Data Analytics with Python</h3>
+                        <p>IIT Roorkee, Jan 2023 (69%) <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS08S6492002504200249" target="_blank" rel="noopener">[Link]</a></p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-certificate"></i>AI Primer Certification</h3>
+                        <p>Infosys <a href="https://drive.google.com/file/d/16K4vJ659k4zTxb62t_EsWpBEMHnnQZzA/view" target="_blank" rel="noopener">[Link]</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>NPTEL: Data Analytics with Python (69%)</h3>
-                    <p>IIT Roorkee, Jan 2023 <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS08S6492002504200249" target="_blank" rel="noopener">[Link]</a></p>
+
+            <h3 class="sub-title">Competitive programming</h3>
+            <div class="awards-grid">
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-code"></i>GeeksforGeeks: Institute Rank 1</h3>
+                        <p>Pondicherry University, 485+ problems solved <a href="https://www.geeksforgeeks.org/user/nileshmishra610/" target="_blank" rel="noopener">[Profile]</a></p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-details">
+                        <h3><i class="fas fa-code"></i>HackerRank: Gold Badges</h3>
+                        <p>C, C++, Python, Java <a href="https://www.hackerrank.com/profile/nkm24snmishra" target="_blank" rel="noopener">[Profile]</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>GeeksforGeeks: 485+ Problems, Rank 2</h3>
-                    <p><a href="https://www.geeksforgeeks.org/user/nileshmishra610/" target="_blank" rel="noopener">[Link]</a></p>
-                </div>
-            </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>HackerRank: Gold Badges (C, C++, Python, Java)</h3>
-                    <p><a href="https://www.hackerrank.com/profile/nkm24snmishra" target="_blank" rel="noopener">[Link]</a></p>
-                </div>
-            </div>
-            <div class="certification-item">
-                <div class="certification-details">
-                    <h3>AI Primer Certification</h3>
-                    <p>Infosys <a href="https://drive.google.com/file/d/16K4vJ659k4zTxb62t_EsWpBEMHnnQZzA/view" target="_blank" rel="noopener">[Link]</a></p>
-                </div>
-            </div>
+
         </div>
 
         <div class="section" id="interests">
@@ -1461,6 +1703,7 @@
     <footer>
         <div class="footer-links">
             <a href="#bio">Bio</a>
+            <a href="#research">Research</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
@@ -1608,28 +1851,95 @@
                 </li>`;
         }
 
-        function renderNews() {
-            const html = newsItems.map(item => newsItemHTML(item, false)).join('');
-            if (prefersReducedMotion) {
-                newsList.innerHTML = html;
+        let newsOffset = 0;
+        let newsTimer = null;
+        let newsPausedByUser = false;
+        const newsPrev = document.getElementById('news-prev');
+        const newsNext = document.getElementById('news-next');
+        const newsPauseBtn = document.getElementById('news-pause');
+        const newsProgress = document.getElementById('news-progress');
+
+        function newsMetrics() {
+            const items = [...newsList.children];
+            const maxOffset = Math.max(0, newsList.scrollHeight - newsTicker.clientHeight);
+            const tops = items.map(li => Math.min(li.offsetTop, maxOffset));
+            return { items, tops, maxOffset };
+        }
+
+        function newsMoveTo(offset) {
+            const { items, tops, maxOffset } = newsMetrics();
+            newsOffset = Math.max(0, Math.min(offset, maxOffset));
+            newsList.style.transform = `translateY(-${newsOffset}px)`;
+            newsPrev.disabled = newsOffset <= 0;
+            // highlight the first item currently visible
+            let current = 0;
+            tops.forEach((t, i) => { if (t <= newsOffset + 1) current = i; });
+            [...newsProgress.children].forEach((dot, i) => dot.classList.toggle('active', i === current));
+            items.forEach(li => li.setAttribute('tabindex', '0'));
+        }
+
+        function newsStep(dir) {
+            const { tops, maxOffset } = newsMetrics();
+            if (dir > 0) {
+                const next = tops.find(t => t > newsOffset + 1);
+                // at the end: loop back to the latest news
+                newsMoveTo(next === undefined || newsOffset >= maxOffset - 1 ? 0 : next);
             } else {
-                // Duplicate the list so the scroll loops seamlessly
-                newsList.innerHTML = html + newsItems.map(item => newsItemHTML(item, true)).join('');
-                newsList.style.setProperty('--ticker-duration', `${Math.max(newsItems.length * 5, 15)}s`);
+                const prev = tops.filter(t => t < newsOffset - 1).pop();
+                newsMoveTo(prev === undefined ? 0 : prev);
             }
+        }
+
+        function newsShouldRun() {
+            return !newsPausedByUser && !prefersReducedMotion &&
+                !newsTicker.matches(':hover') && !newsList.querySelector('.news-item.open');
+        }
+
+        function newsRestartTimer() {
+            clearInterval(newsTimer);
+            newsTimer = setInterval(() => { if (newsShouldRun()) newsStep(1); }, 4000);
+        }
+
+        function setNewsPaused(paused) {
+            newsPausedByUser = paused;
+            newsPauseBtn.innerHTML = paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            newsPauseBtn.setAttribute('aria-label', paused ? 'Play news' : 'Pause news');
+        }
+
+        newsPrev.addEventListener('click', () => { newsStep(-1); newsRestartTimer(); });
+        newsNext.addEventListener('click', () => { newsStep(1); newsRestartTimer(); });
+        newsPauseBtn.addEventListener('click', () => setNewsPaused(!newsPausedByUser));
+
+        // swipe support on phones
+        let touchY = null;
+        newsTicker.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
+        newsTicker.addEventListener('touchend', e => {
+            if (touchY === null) return;
+            const dy = touchY - e.changedTouches[0].clientY;
+            if (Math.abs(dy) > 30) { newsStep(dy > 0 ? 1 : -1); newsRestartTimer(); }
+            touchY = null;
+        });
+
+        function renderNews() {
+            newsList.innerHTML = newsItems.map(item => newsItemHTML(item, false)).join('');
+            newsProgress.innerHTML = newsItems.map(() => '<span></span>').join('');
 
             newsList.querySelectorAll('.news-item').forEach(li => {
                 const toggle = () => {
                     const wasOpen = li.classList.contains('open');
                     newsList.querySelectorAll('.news-item.open').forEach(o => o.classList.remove('open'));
                     if (!wasOpen && li.querySelector('.news-details')) li.classList.add('open');
-                    newsTicker.classList.toggle('paused', !!newsList.querySelector('.news-item.open'));
+                    newsMoveTo(Math.min(li.offsetTop, newsList.scrollHeight - newsTicker.clientHeight));
                 };
                 li.addEventListener('click', e => { if (!e.target.closest('a')) toggle(); });
                 li.addEventListener('keydown', e => {
                     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
                 });
             });
+
+            if (prefersReducedMotion) setNewsPaused(true);
+            newsMoveTo(0);
+            newsRestartTimer();
         }
 
         loadJSON('news.json')
@@ -1892,11 +2202,18 @@
         const skills = [
             'Python', 'C', 'C++', 'Java', 'SQL', 'HTML', 'CSS', 'JavaScript',
             'TensorFlow', 'Scikit-Learn', 'OpenCV', 'Android Studio', 'Firebase',
-            'MySQL', 'Git', 'Pandas', 'Matplotlib', 'Seaborn', 'LiDAR', 'Point Clouds', 'Satellite Imagery', '3D Vision'
+            'MySQL', 'Git', 'Pandas', 'Matplotlib', 'Seaborn', 'PyTorch', 'Explainable AI', 'Grad-CAM'
         ];
         const achievements = [
             'IndiaAI Fellowship', 'GATE Qualified (Data Science & AI)', 'UGC NET (Computer Science)',
-            'NPTEL: Data Analytics with Python', 'GeeksforGeeks: 485+ Problems', 'HackerRank: Gold Badges', 'AI Primer Certification'
+            'NPTEL: Data Analytics with Python', 'GeeksforGeeks: Institute Rank 1', 'HackerRank: Gold Badges', 'AI Primer Certification',
+            'Slogan Writing Award (District Magistrate)', 'Speech Competition Winner'
+        ];
+        const researchTopics = [
+            'Multimodal Geospatial Fusion', 'Satellite Imagery', 'UAV LiDAR', 'Point Clouds', '3D Terrain Reconstruction',
+            'Digital Twins', 'Neural Radiance Fields (NeRF)', 'Point Transformers', 'Graph Neural Networks',
+            'Diffusion Models', 'Semantic Segmentation', 'Change Detection', 'Landslide Susceptibility',
+            'Self-Supervised Learning', 'Remote Sensing', '3D Vision'
         ];
 
         function openSearch() {
@@ -1921,6 +2238,7 @@
 
             const results = [];
             const has = s => (s || '').toLowerCase().includes(q);
+            researchTopics.forEach(r => has(r) && results.push({ type: 'Research', value: r, section: 'research' }));
             skills.forEach(s => has(s) && results.push({ type: 'Skill', value: s, section: 'skills' }));
             projects.forEach(p => (has(p.title) || has(p.description) || (p.tags || []).some(has)) && results.push({ type: 'Project', value: p.title, section: 'projects' }));
             publications.forEach(p => (has(p.title) || has(p.venue) || (p.authors || []).some(has)) && results.push({ type: 'Publication', value: p.title, section: 'publications' }));
