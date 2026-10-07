@@ -6,6 +6,12 @@
         "details": "Fellowship under the IndiaAI Mission, Government of India, supporting my PhD research at IIT Jodhpur."
     },
     {
+        "title": "Reviewer for ICVGIP 2026",
+        "date": "2026",
+        "description": "Served as a reviewer for the Indian Conference on Computer Vision, Graphics and Image Processing (ICVGIP 2026).",
+        "details": ""
+    },
+    {
         "title": "Paper Accepted at CML-2026",
         "date": "March 2026",
         "description": "SFLCDApp: simulated federated learning for crop disease detection with lightweight CNNs on Android.",
