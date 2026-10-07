@@ -9,8 +9,31 @@
             "images/projects/Result.jpg",
             "images/projects/visualization1.jpg"
         ],
-        "tags": ["Python", "Flask", "Android", "Machine Learning", "PCA"],
+        "tags": [
+            "Python",
+            "Flask",
+            "Android",
+            "Machine Learning",
+            "PCA"
+        ],
         "link": "https://github.com/nileshmishra610/Anomaly-Detection-in-Network-Traffic-Using-Clustering-Techniques"
+    },
+    {
+        "title": "Stress-Testing CNNs: ResNet-18 on CIFAR-10",
+        "description": "ResNet-18 trained from scratch on CIFAR-10, stress-tested through high-confidence failure analysis and explainability, then improved with one controlled change: label smoothing (93.62% → 94.35%).",
+        "moreDetails": "Mined wrong predictions made with over 85% confidence and found a shared pattern: every one was predicted as \"dog\", pointing to an overconfident class template. Grad-CAM, Grad-CAM++ and saliency maps were implemented from scratch to explain each failure. Adding label smoothing (ε = 0.1), with architecture, optimizer and schedule unchanged, raised test accuracy by 0.73% and dog-class accuracy by 2.3%. Team project with Anik De and Juhi Chaudhary (IIT Jodhpur).",
+        "category": "dl",
+        "images": [
+            "images/projects/stress-test-resnet.png"
+        ],
+        "tags": [
+            "PyTorch",
+            "ResNet-18",
+            "Grad-CAM",
+            "Explainable AI",
+            "CIFAR-10"
+        ],
+        "link": "https://github.com/anikde/Stress-Testing-ResNet"
     },
     {
         "title": "SFLCDApp: Federated Crop Disease Detection",
@@ -20,7 +43,12 @@
         "images": [
             "images/projects/crop_disease_detection.jpg"
         ],
-        "tags": ["Federated Learning", "CNN", "Android", "Deep Learning"],
+        "tags": [
+            "Federated Learning",
+            "CNN",
+            "Android",
+            "Deep Learning"
+        ],
         "link": ""
     },
     {
@@ -31,16 +59,27 @@
         "images": [
             "images/projects/attendance-system.PNG"
         ],
-        "tags": ["Python", "OpenCV", "MySQL", "LBPH"],
+        "tags": [
+            "Python",
+            "OpenCV",
+            "MySQL",
+            "LBPH"
+        ],
         "link": "https://github.com/nileshmishra610/Attendance-Management-System-Using-Face-Recognition"
     },
     {
         "title": "Mango Blossom Disease Detection",
-        "description": "CNN models (VGG16, ResNet50) that classify mango blossom diseases from 1,000 images, deployed as an Android app for real-time diagnosis by farmers.",
+        "description": "CNN models (VGG16, ResNet50) that classify mango blossom diseases from 5,000 images, deployed as an Android app for real-time diagnosis by farmers.",
         "moreDetails": "Related research: <a href=\"https://www.researchgate.net/publication/415194947_SA-HANet_Symptom-Aware_Hierarchical_Attention_Network_for_Cross-Orchard_Mango_Blossom_Disease_Detection\" target=\"_blank\" rel=\"noopener\">SA-HANet (preprint)</a>.",
         "category": "dl",
         "images": [],
-        "tags": ["Python", "TensorFlow", "VGG16", "ResNet50", "Android Studio"],
+        "tags": [
+            "Python",
+            "TensorFlow",
+            "VGG16",
+            "ResNet50",
+            "Android Studio"
+        ],
         "link": "https://github.com/nileshmishra610"
     },
     {
@@ -51,7 +90,12 @@
         "images": [
             "images/projects/College.jpg"
         ],
-        "tags": ["Java", "Android Studio", "Firebase", "XML"],
+        "tags": [
+            "Java",
+            "Android Studio",
+            "Firebase",
+            "XML"
+        ],
         "link": ""
     },
     {
@@ -67,7 +111,12 @@
             "images/projects/ExamAPP5.jpg",
             "images/projects/ExamAPP6.jpg"
         ],
-        "tags": ["Java", "Android Studio", "Firebase", "XML"],
+        "tags": [
+            "Java",
+            "Android Studio",
+            "Firebase",
+            "XML"
+        ],
         "link": ""
     }
 ]
